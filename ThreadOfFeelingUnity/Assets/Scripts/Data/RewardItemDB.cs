@@ -38,8 +38,14 @@ namespace Data
                 vector_z = value.z;
             }
         }
-
         // item_description, TEXT, 아이템 설명
         public string item_description { get; set; }
+
+        [Ignore]
+        public Sprite icon { get; set; }
+        
+        [Ignore]
+        public GameObject prefab { get; set; }
+        
     }
 }

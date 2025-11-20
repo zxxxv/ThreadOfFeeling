@@ -2,6 +2,7 @@ using System.IO;
 using Data;
 using SQLite;
 using UnityEngine;
+using System.Linq; // 데이터 쉽게 검색/필터링 해주는 기능 
 
 namespace Managers
 {
@@ -65,7 +66,50 @@ namespace Managers
         #endregion
 
         #region RoomLayout 함수 
+
+
+        /// 특정 프로필의 방 레이아웃 저장 
+        public void SaveRoomLayout(int profileId, int roomId, string slotsJson) {
+        // 기존 레이아웃이 있는지 확인
+        var existing = _connection.Table<RoomLayoutDB>()
+        .Where(r => r.profile_id == profileId && r.room_id == roomId)
+        .FirstOrDefault();
+    
+        if (existing != null) {
+        // 업데이트
+        existing.slots_jason = slotsJson;
+        existing.save_time = System.DateTime.Now;
+        _connection.Update(existing);
+        Debug.Log($"[DatabaseManager] 방 레이아웃 업데이트: roomId={roomId}");
+        }
+        else {
+        // 새로 생성
+        var newLayout = new RoomLayoutDB
+        {
+            profile_id = profileId,
+            room_id = roomId,
+            slots_jason = slotsJson,
+            save_time = System.DateTime.Now
+        };
+        _connection.Insert(newLayout);
+        Debug.Log($"[DatabaseManager] 방 레이아웃 저장: roomId={roomId}");
+        }
+}
+        /// 특정 프로필의 방 레이아웃 로드 
+        public RoomLayoutDB LoadRoomLayout(int profileId, int roomId) {
+            var layout = _connection.Table<RoomLayoutDB>()
+            .Where(r => r.profile_id == profileId && r.room_id == roomId)
+            .FirstOrDefault();
+        
+            if (layout != null) {   
+            Debug.Log($"[DatabaseManager] 방 레이아웃 로드 성공: roomId={roomId}"); } 
+            else {
+            Debug.Log($"[DatabaseManager] 저장된 레이아웃 없음: roomId={roomId}"); }
+            return layout; 
+        }
+        
         #endregion
+
 
         #region WeeklyReport 함수 
         #endregion
