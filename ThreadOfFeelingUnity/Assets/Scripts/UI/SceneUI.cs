@@ -11,32 +11,51 @@ namespace UI
         [SerializeField] private GameObject menuSet;
         [Tooltip("메뉴 창에 표시될 유저 닉네임 Text")]
         [SerializeField] private TextMeshProUGUI menuUserName;
-
+        
         protected virtual void Start() {
+            Init();
             FindUserName();
-            if (menuSet != null) {
-                menuSet.SetActive(false);
-            }
-            else {
-                Debug.LogError("[SceneUI] 'MenuSet' 게임 오브젝트가 인스펙터에 연결되지 않았습니다");
-            }
+        }
+        
+        protected virtual void Init()
+        {
+            // 초기화
         }
 
         protected virtual void Update() {
+            if (InputManager.Instance == null) {
+                Debug.LogWarning("InputManager가 없습니다!");
+                return;
+            }
             if (InputManager.Instance.GetEscapeKeyDown()) {
                 if (menuSet != null) {
                     MenuSet(!menuSet.activeSelf);
+                }
+                else {
+                Debug.LogWarning("menuSet이 연결되지 않았습니다!");
                 }
             }
         }
 
         public void FindUserName() {
-            if (DataManager.Instance != null && DataManager.Instance.currentProfile != null) {
-                menuUserName.text = DataManager.Instance.currentProfile.nickname;
+            if (menuUserName == null) {
+                Debug.LogWarning("[SceneUI] menuUserName이 연결되지 않았습니다!");
+                return;
             }
-            else {
-                Debug.LogError("[SceneUI] DataManager 또는 프로필을 찾을 수 없습니다");
+            
+            if (DataManager.Instance == null) {
+                Debug.LogWarning("[SceneUI] DataManager가 없습니다!");
+                return;
             }
+            
+            if (DataManager.Instance.currentProfile == null) {
+                Debug.LogWarning("[SceneUI] currentProfile이 없습니다!");
+                return;
+            }
+            
+            // 모두 안전하면 설정
+            menuUserName.text = DataManager.Instance.currentProfile.nickname;
+            Debug.Log($"[SceneUI] 사용자 이름 표시: {menuUserName.text}");
         }
 
         private void MenuSet(bool isActive) {

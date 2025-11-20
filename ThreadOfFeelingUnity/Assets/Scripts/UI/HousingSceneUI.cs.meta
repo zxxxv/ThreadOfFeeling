@@ -1,2 +1,17 @@
 fileFormatVersion: 2
 guid: 6ab2868e1362f684e913088874d6ea0a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - menuSet: {fileID: 1888403209062338316, guid: 1d9e1cc8d040273439f6aa8ae5c7f781, type: 3}
+  - menuUserName: {instanceID: 0}
+  - itemsContainer: {instanceID: 0}
+  - inventoryPanel: {instanceID: 0}
+  - saveLayoutButton: {instanceID: 0}
+  - exitButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
