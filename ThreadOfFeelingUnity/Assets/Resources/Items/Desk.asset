@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7b2fefa0ce13f4bb8e78d8d19175c4, type: 3}
   m_Name: Desk
   m_EditorClassIdentifier: 
-  itemId: 0
-  itemName: 
-  itemExplain: 
-  itemIcon: {fileID: 0}
-  itemType: 0
-  itemPrefab: {fileID: 0}
+  itemId: 1
+  itemName: "\uCC45\uC0C1"
+  itemExplain: "\uACF5\uBD80\uD560 \uC218 \uC788\uB294 \uCC45\uC0C1\uC785\uB2C8\uB2E4 "
+  itemIcon: {fileID: 8033975403568566451, guid: f1b1b046aab3a4505a9af1312216cdf9, type: 3}
+  itemType: 1
+  itemPrefab: {fileID: 8485593052243636595, guid: 34969c812411a44fe9ad0c99dbb05551, type: 3}

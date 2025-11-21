@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7b2fefa0ce13f4bb8e78d8d19175c4, type: 3}
   m_Name: Rug
   m_EditorClassIdentifier: 
-  itemId: 0
-  itemName: 
-  itemExplain: 
-  itemIcon: {fileID: 0}
-  itemType: 0
-  itemPrefab: {fileID: 0}
+  itemId: 3
+  itemName: "\uB7EC\uADF8"
+  itemExplain: "\uB530\uB73B\uD55C \uCE74\uD3AB\uC785\uB2C8\uB2E4"
+  itemIcon: {fileID: 8057834620721326432, guid: e07eccbbc7c8b42a98d0c365d2ffc812, type: 3}
+  itemType: 1
+  itemPrefab: {fileID: 8485593052243636595, guid: 1e29b1bf35dcf447183e8e67957c79b5, type: 3}

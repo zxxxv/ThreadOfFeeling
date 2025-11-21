@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7b2fefa0ce13f4bb8e78d8d19175c4, type: 3}
   m_Name: Telephone pole
   m_EditorClassIdentifier: 
-  itemId: 0
-  itemName: 
-  itemExplain: 
-  itemIcon: {fileID: 0}
+  itemId: 5
+  itemName: "\uC804\uBD07\uB300 "
+  itemExplain: "\uB9C8\uC744\uC744 \uBC1D\uD788\uB294 \uC804\uBD07\uB300\uC785\uB2C8\uB2E4"
+  itemIcon: {fileID: -8467353130779372165, guid: 9614a2b09d137c342ad8c4b4ba6f7a0b, type: 3}
   itemType: 0
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 7846291435284776207, guid: 1f5b1069518c9a44697576a049e8be3b, type: 3}

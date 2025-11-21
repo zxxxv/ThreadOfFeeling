@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7b2fefa0ce13f4bb8e78d8d19175c4, type: 3}
   m_Name: Window
   m_EditorClassIdentifier: 
-  itemId: 0
-  itemName: 
-  itemExplain: 
-  itemIcon: {fileID: 0}
-  itemType: 0
-  itemPrefab: {fileID: 0}
+  itemId: 4
+  itemName: "\uCC3D\uBB38"
+  itemExplain: "\uBC1D\uC740 \uBE5B\uC774 \uB4E4\uC5B4\uC624\uB294 \uCC3D\uBB38\uC785\uB2C8\uB2E4"
+  itemIcon: {fileID: -9051692800306759852, guid: f2eceba6e7a284e8eba48662a9d00b4a, type: 3}
+  itemType: 1
+  itemPrefab: {fileID: 8485593052243636595, guid: 9804cb35b83214a11a6249f6954fb2ec, type: 3}

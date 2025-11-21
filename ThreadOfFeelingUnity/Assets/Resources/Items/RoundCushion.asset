@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7b2fefa0ce13f4bb8e78d8d19175c4, type: 3}
   m_Name: RoundCushion
   m_EditorClassIdentifier: 
-  itemId: 0
-  itemName: 
-  itemExplain: 
-  itemIcon: {fileID: 0}
-  itemType: 0
-  itemPrefab: {fileID: 0}
+  itemId: 2
+  itemName: "\uB465\uADFC \uCFE0\uC158"
+  itemExplain: "\uD479\uC2DD\uD55C \uCFE0\uC158\uC785\uB2C8\uB2E4"
+  itemIcon: {fileID: -2172252158992503330, guid: c3c3b012aa923436faf981a0228bc7c0, type: 3}
+  itemType: 1
+  itemPrefab: {fileID: 8485593052243636595, guid: 808f889322afd4dc398a8399bb170574, type: 3}

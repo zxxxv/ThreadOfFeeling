@@ -235,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70352765}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6dd288270cca4cb4afb12be475e32f1, type: 3}
   m_Name: 
@@ -331,7 +331,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 8057834620721326432, guid: e07eccbbc7c8b42a98d0c365d2ffc812, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222061034}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6dd288270cca4cb4afb12be475e32f1, type: 3}
   m_Name: 
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361325668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6dd288270cca4cb4afb12be475e32f1, type: 3}
   m_Name: 
@@ -913,9 +913,9 @@ RectTransform:
   - {fileID: 2070565632}
   m_Father: {fileID: 1031651023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -1350}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -185, y: 85}
   m_SizeDelta: {x: 350, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639049352
@@ -1054,28 +1054,7 @@ MonoBehaviour:
   inventoryPanel: {fileID: 733832178}
   saveLayoutButton: {fileID: 639049352}
   exitButton: {fileID: 1319900968}
-  furnitureMappings:
-  - itemId: 0
-    icon: {fileID: 2122107185238573207, guid: e14354017347c44a0b156861db5b98c2, type: 3}
-    prefab: {fileID: 8485593052243636595, guid: f3c1e244c9b8d4af290393357cd25716, type: 3}
-  - itemId: 0
-    icon: {fileID: 8033975403568566451, guid: f1b1b046aab3a4505a9af1312216cdf9, type: 3}
-    prefab: {fileID: 8485593052243636595, guid: 34969c812411a44fe9ad0c99dbb05551, type: 3}
-  - itemId: 0
-    icon: {fileID: -2172252158992503330, guid: c3c3b012aa923436faf981a0228bc7c0, type: 3}
-    prefab: {fileID: 8485593052243636595, guid: 808f889322afd4dc398a8399bb170574, type: 3}
-  - itemId: 0
-    icon: {fileID: 8057834620721326432, guid: e07eccbbc7c8b42a98d0c365d2ffc812, type: 3}
-    prefab: {fileID: 8485593052243636595, guid: 1e29b1bf35dcf447183e8e67957c79b5, type: 3}
-  - itemId: 0
-    icon: {fileID: -9051692800306759852, guid: f2eceba6e7a284e8eba48662a9d00b4a, type: 3}
-    prefab: {fileID: 8485593052243636595, guid: 9804cb35b83214a11a6249f6954fb2ec, type: 3}
   mainCamera: {fileID: 0}
-  floorLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  gridSize: 0.5
-  useGrid: 1
 --- !u!1 &733832178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsContainer: {fileID: 892990792}
   maxSlots: 5
+  itemsContainer: {fileID: 0}
+  housingSceneUI: {fileID: 0}
 --- !u!1 &733921827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,7 +1189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733921827}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6dd288270cca4cb4afb12be475e32f1, type: 3}
   m_Name: 
@@ -1304,7 +1285,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_Sprite: {fileID: -9051692800306759852, guid: f2eceba6e7a284e8eba48662a9d00b4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1721,16 +1702,10 @@ MonoBehaviour:
   menuSet: {fileID: 1577201833}
   menuUserName: {fileID: 1577201831}
   itemsContainer: {fileID: 1354302102}
-  inventoryPanel: {fileID: 0}
+  inventoryPanel: {fileID: 733832178}
   saveLayoutButton: {fileID: 639049352}
   exitButton: {fileID: 1319900968}
-  furnitureMappings: []
-  mainCamera: {fileID: 0}
-  floorLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  gridSize: 0.5
-  useGrid: 1
+  mainCamera: {fileID: 1185633516}
 --- !u!114 &1031651025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,13 +2012,7 @@ MonoBehaviour:
   inventoryPanel: {fileID: 0}
   saveLayoutButton: {fileID: 0}
   exitButton: {fileID: 0}
-  furnitureMappings: []
   mainCamera: {fileID: 0}
-  floorLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  gridSize: 0.5
-  useGrid: 1
 --- !u!1 &1239710319
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,7 +2324,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528198442}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6dd288270cca4cb4afb12be475e32f1, type: 3}
   m_Name: 
@@ -2748,7 +2717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -135, y: 70}
+  m_AnchoredPosition: {x: -130, y: 70}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2070565633
@@ -2771,7 +2740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC800\uC7A5 "
+  m_text: "\uC800\uC7A5\uD558\uAE30 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
   m_sharedMaterial: {fileID: 4689241269245727905, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
@@ -2868,13 +2837,7 @@ MonoBehaviour:
   inventoryPanel: {fileID: 0}
   saveLayoutButton: {fileID: 0}
   exitButton: {fileID: 0}
-  furnitureMappings: []
   mainCamera: {fileID: 0}
-  floorLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  gridSize: 0.5
-  useGrid: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

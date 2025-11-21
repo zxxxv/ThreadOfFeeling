@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Bed
   m_EditorClassIdentifier: 
   itemId: 0
-  itemName: 
-  itemExplain: 
-  itemIcon: {fileID: 0}
-  itemType: 0
+  itemName: "\uCE68\uB300"
+  itemExplain: "\uD3B8\uC548\uD55C \uCE68\uB300\uC785\uB2C8\uB2E4. \uC7A0\uC744 \uC798
+    \uC218 \uC788\uC5B4\uC694"
+  itemIcon: {fileID: 2122107185238573207, guid: e14354017347c44a0b156861db5b98c2, type: 3}
+  itemType: 1
   itemPrefab: {fileID: 0}
