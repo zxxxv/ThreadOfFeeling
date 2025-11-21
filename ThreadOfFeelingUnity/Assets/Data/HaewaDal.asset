@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f30d55231bae6c44b96dac5ec917bc5, type: 3}
   m_Name: HaewaDal
   m_EditorClassIdentifier: 
+  storyId: 1
   storyTitle: "\uD574\uC640\uB2EC\uC774\uB41C \uC624\uB204\uC774"
   storyCoverImage: {fileID: -4821923812156178435, guid: e9a37f26de32442eeb218d8122ffafff, type: 3}
   storyDescription: "\uC624\uB204\uC774\uAC00 \uC788\uC5C8\uC74C "
   storyTag: 
-  storyReward: {fileID: 0}
+  storyReward: {fileID: 11400000, guid: b75ee65caa1ff0b41bc3fcebf913bac9, type: 2}
   scenarios:
   - image: {fileID: -9062015590762506407, guid: 99cff76adc59546399c9c0ec20630d43, type: 3}
     dialogueText: "\uC5C4\uB9C8\uAC00 \uB5A1 \uBC14\uAD6C\uB2C8\uB97C \uB4E4\uACE0

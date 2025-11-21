@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f30d55231bae6c44b96dac5ec917bc5, type: 3}
   m_Name: Heungbu
   m_EditorClassIdentifier: 
+  storyId: 0
   storyTitle: "\uD765\uBD80\uC640 \uB180\uBD80"
   storyCoverImage: {fileID: 5422259817500351722, guid: 9faf1856d6f0b47729fbb12658b538a0, type: 3}
   storyDescription: "\uD765\uBD80\uC640 \uB180\uBD80\uAC00 \uC788\uC5C8\uC74C"
-  storyTag: "#\uBC15 #\uAD8C\uC120\uC9D5\uC545"
+  storyTag: "#10\uAC1C\uC52C #30\uBB38\uC81C #\uBC15"
   storyReward: {fileID: 11400000, guid: b75ee65caa1ff0b41bc3fcebf913bac9, type: 2}
   scenarios:
   - image: {fileID: -9062015590762506407, guid: e5dc45d6915b549828bc0132ce8fa5bf, type: 3}
@@ -66,7 +67,7 @@ MonoBehaviour:
         \uD558\uB294 \uAC8C \uC88B\uC744\uAE4C\uC694?"
       answer1: "\uB180\uBD80\uB97C \uB54C\uB824\uC694."
       answer2: "\uC5C4\uB9C8\uC5D0\uAC8C \uC18D\uC0C1\uD55C \uB9C8\uC74C\uC744 \uB9D0\uD574\uC694."
-      correctAnswerIndex: 0
+      correctAnswerIndex: 1
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
     - questionText: "\uC7A0\uC2DC \uD6C4, \uC5C4\uB9C8\uAC00 \uD765\uBD80\uC5D0\uAC8C
@@ -286,8 +287,8 @@ MonoBehaviour:
     quizzes:
     - questionText: "\uB180\uBD80\uAC00 \uBA3C\uC800 \uD654\uD574\uD558\uC790\uACE0
         \uB9D0\uD588\uC5B4\uC694. \uC9C0\uAE08 \uB0B4 \uAE30\uBD84\uC740 \uC5B4\uB5A4\uAC00\uC694?"
-      answer1: 
-      answer2: 
+      answer1: 1
+      answer2: 2
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"

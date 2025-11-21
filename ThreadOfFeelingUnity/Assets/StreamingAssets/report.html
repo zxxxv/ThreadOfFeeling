@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>상황 중심 감정 이해 체크리스트</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+    body {
+      margin: 0;
+      padding: 1.5rem;
+    }
+    .app-container {
+      max-width: 980px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem 1.75rem 2rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin: 0 0 0.25rem;
+    }
+    p.description {
+      margin-top: 0;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      margin-right: 0.35rem;
+    }
+    .notice {
+      margin-top: 0.4rem;
+      font-size: 0.76rem;
+      color: #6b7280;
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 0.45rem 0.6rem;
+      border: 1px dashed #e5e7eb;
+    }
+    .notice strong {
+      color: #b91c1c;
+    }
+    .score-scale {
+      font-size: 0.82rem;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0 0.75rem;
+    }
+    .btn {
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: #111827;
+      transition: background 0.1s, border-color 0.1s;
+    }
+    .btn-primary {
+      background: #2563eb;
+      border-color: #1d4ed8;
+      color: #f9fafb;
+    }
+    .btn:hover {
+      background: #e5e7eb;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+    .btn span.icon {
+      font-size: 0.9em;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .section-card {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 1rem 1rem 0.8rem;
+      margin-top: 1rem;
+      background: #f9fafb;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #111827;
+    }
+    .section-score {
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
+    .section-score span {
+      font-weight: 600;
+      color: #111827;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.35rem 0.3rem;
+      vertical-align: top;
+    }
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      font-size: 0.84rem;
+      color: #4b5563;
+      text-align: center;
+    }
+    th.item-header {
+      text-align: left;
+      width: 68%;
+    }
+    td.item-label {
+      padding-right: 0.5rem;
+    }
+    .item-code {
+      font-size: 0.78rem;
+      color: #6b7280;
+      margin-right: 0.35rem;
+      white-space: nowrap;
+    }
+    .radio-group {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .radio-group label {
+      font-size: 0.8rem;
+      color: #4b5563;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.15rem;
+      cursor: pointer;
+    }
+    textarea.memo {
+      width: 100%;
+      min-height: 60px;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      padding: 0.5rem 0.6rem;
+      font-size: 0.85rem;
+      resize: vertical;
+    }
+    .memo-label {
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: #4b5563;
+    }
+    .global-summary {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .global-score-box {
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      min-width: 220px;
+    }
+    .global-score-box h3 {
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+    }
+    .global-score-box p {
+      margin: 0.1rem 0;
+      font-size: 0.9rem;
+      color: #1f2937;
+    }
+    .global-score-box span.value {
+      font-weight: 700;
+    }
+    .global-textarea-wrapper {
+      flex: 1;
+      min-width: 240px;
+    }
+    .global-textarea-wrapper label {
+      display: block;
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 0.25rem;
+    }
+    .global-textarea-wrapper textarea {
+      width: 100%;
+      min-height: 80px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      padding: 0.5rem 0.6rem;
+      font-size: 0.85rem;
+      resize: vertical;
+    }
+    .meta {
+      margin-top: 0.75rem;
+      font-size: 0.76rem;
+      color: #9ca3af;
+      text-align: right;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 0.75rem;
+      }
+      .app-container {
+        padding: 1rem 1rem 1.25rem;
+      }
+      th.item-header {
+        width: 58%;
+      }
+      .radio-group {
+        gap: 0.25rem;
+      }
+      .radio-group label {
+        font-size: 0.78rem;
+      }
+      .controls-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #ffffff;
+      }
+      .app-container {
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .controls-bar, .meta {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div>
+      <span class="badge">상황 중심</span>
+      <span class="badge">감정 이해 평가</span>
+    </div>
+    <h1>상황 중심 감정 이해 체크리스트</h1>
+    <p class="description">
+      자폐 아동의 감정 인식 능력을
+      <strong>상황·행동·말투·결과·사회적 맥락</strong> 중심으로 평가하기 위한 관찰자용 체크리스트입니다.
+    </p>
+    <p class="notice">
+      <strong>주의:</strong> 본 체크리스트는 게임 활동을 통한 상황 중심 감정 인식 향상을 확인하기 위한 교육·중재용 관찰 도구이며,
+      의학적·임상적 진단 기능을 제공하지 않습니다.
+    </p>
+    <div class="score-scale">
+      점수 기준: N/A = 관련 없음 / 0점 = 전혀 수행 못함 / 1점 = 힌트가 있어야 수행 / 2점 = 일부 단서를 활용해 수행 / 3점 = 단서를 일관되게 활용해 정확히 수행
+    </div>
+
+    <div class="controls-bar">
+      <button class="btn btn-primary" id="btn-export">
+        <span class="icon">💾</span> 데이터 내보내기 (JSON)
+      </button>
+      <label class="btn" for="file-import">
+        <span class="icon">📂</span> 데이터 불러오기 (JSON)
+      </label>
+      <input type="file" id="file-import" accept="application/json" />
+      <button class="btn" id="btn-print">
+        <span class="icon">🖨️</span> 인쇄 / PDF 저장
+      </button>
+    </div>
+
+    <div id="sections-container"></div>
+
+    <div class="global-summary">
+      <div class="global-score-box" id="global-score-box">
+        <h3>전체 점수 요약</h3>
+        <p>총점: <span class="value" id="global-total">0</span>점</p>
+        <p>평균점수: <span class="value" id="global-avg">0.0</span>점 (0~3)</p>
+        <p>응답한 문항 수: <span class="value" id="global-count">0</span>개</p>
+      </div>
+      <div class="global-textarea-wrapper">
+        <label for="global-notes">종합 의견 / 강점 · 보완 필요 영역 메모</label>
+        <textarea id="global-notes" placeholder="예: 상황 단서는 잘 사용하는 편이나, 사회적 관계 맥락(친구/낯선 사람)에 따른 감정 추론이 어려워 보임."></textarea>
+      </div>
+    </div>
+
+    <div class="meta">
+      본 체크리스트는 Narrative-based intervention, Social Information Processing, ToM, SCERTS, ESDM 등 연구·모델을 바탕으로 구성되었습니다.
+    </div>
+  </div>
+
+  <script>
+    const checklistData = [
+      {
+        id: "sec1",
+        title: "1. 상황 단서 기반 감정 추론 능력",
+        items: [
+          { code: "1-1-1", text: "상황 설명만으로 인물이 어떤 감정을 느낄지 예측한다." },
+          { code: "1-1-2", text: "사건의 원인(잃어버림, 실패, 혼남 등)을 감정과 자연스럽게 연결한다." },
+          { code: "1-1-3", text: "인물이 느낄 수 있는 감정을 한 가지 이상 말하거나 선택한다." },
+          { code: "1-2-1", text: "사건의 결말을 보고 감정의 변화를 추측한다." },
+          { code: "1-2-2", text: "긍정적 결과/부정적 결과에 따라 감정이 달라질 수 있음을 구분한다." },
+          { code: "1-2-3", text: "결말이 바뀌면 감정 선택도 상황에 맞게 유연하게 바꾼다." },
+          { code: "1-3-1", text: "위험 상황/평온한 상황을 구별하고 그에 맞는 감정을 예측한다." },
+          { code: "1-3-2", text: "단서가 적은 모호한 상황에서도 무작위가 아닌 합리적인 추론을 한다." },
+          { code: "1-3-3", text: "상황의 긍·부정 분위기(분위기, 맥락)를 자연스럽게 파악한다." }
+        ]
+      },
+      {
+        id: "sec2",
+        title: "2. 행동 단서 기반 감정 추론 능력 (표정 제외)",
+        items: [
+          { code: "2-1-1", text: "인물이 뛰어감/물러남/축 처짐 등의 행동을 보고 감정을 추측한다." },
+          { code: "2-1-2", text: "활동 수준이 낮아지면 슬픔·지침과 같은 감정을 추정한다." },
+          { code: "2-1-3", text: "활동 수준이 높아지면 기쁨·흥분과 같은 감정을 추정한다." },
+          { code: "2-2-1", text: "이전과 이후의 행동 변화를 감정 변화와 연결하여 이해한다." },
+          { code: "2-2-2", text: "같은 행동이라도 상황에 따라 다른 감정이 될 수 있음을 이해한다." },
+          { code: "2-2-3", text: "긴장된 행동(손 꽉 쥠, 발 동동 등)을 불안·화남 등의 감정과 연결한다." }
+        ]
+      },
+      {
+        id: "sec3",
+        title: "3. 언어·말투 단서 기반 감정 이해",
+        items: [
+          { code: "3-1-1", text: "목소리가 작고 느릴 때 슬픔·실망 등의 감정으로 추정한다." },
+          { code: "3-1-2", text: "목소리가 크고 빠를 때 화남·흥분 등의 감정으로 추정한다." },
+          { code: "3-1-3", text: "떨림·머뭇거림이 있는 말투를 불안·두려움 등으로 연결한다." },
+          { code: "3-2-1", text: "부정적 단어나 걱정 표현을 부정감정과 연결한다." },
+          { code: "3-2-2", text: "긍정적 표현(“좋아!”, “됐다!” 등)을 기쁨·안도감과 연결한다." },
+          { code: "3-2-3", text: "“어떡하지…”, “큰일 났다…”와 같은 대사의 정서를 파악한다." }
+        ]
+      },
+      {
+        id: "sec4",
+        title: "4. 사회적 맥락 및 관계 기반 감정 이해",
+        items: [
+          { code: "4-1-1", text: "상대가 친구/가족/낯선 사람인지에 따라 서로 다른 감정을 판단한다." },
+          { code: "4-1-2", text: "상대의 의도(장난, 공격, 실수)를 감정과 연결하여 다르게 이해한다." },
+          { code: "4-1-3", text: "도움/무시/방해 등 상호작용의 성격에 따라 감정을 구분한다." },
+          { code: "4-2-1", text: "칭찬·응원 상황에서는 기쁨·자신감과 같은 감정을 선택한다." },
+          { code: "4-2-2", text: "거절·비난 상황에서는 속상함·좌절 등의 감정을 선택한다." },
+          { code: "4-2-3", text: "갈등 상황에서 양쪽 인물이 각각 느낄 수 있는 감정을 추론한다." }
+        ]
+      },
+      {
+        id: "sec5",
+        title: "5. 이야기 전체 흐름 기반 감정 이해",
+        items: [
+          { code: "5-1-1", text: "이야기의 시작·중간·끝에서 감정이 달라질 수 있음을 이해한다." },
+          { code: "5-1-2", text: "사건 전후의 감정 변화를 자연스럽게 연결한다." },
+          { code: "5-1-3", text: "이야기가 길어져도 인물의 감정을 계속 추적하려고 한다." },
+          { code: "5-2-1", text: "겉으로는 평온해도 상황 때문에 속으로 불안할 수 있음을 이해한다." },
+          { code: "5-2-2", text: "두 가지 감정(기쁘지만 걱정됨 등)을 동시에 느낄 수 있음을 이해한다." },
+          { code: "5-2-3", text: "감정이 겉으로 드러나지 않을 때에도 추론하려는 시도를 보인다." }
+        ]
+      },
+      {
+        id: "sec6",
+        title: "6. 오답 분석 및 학습 반응",
+        items: [
+          { code: "6-1-1", text: "두려움–깜짝 놀람을 자주 혼동하지 않는다." },
+          { code: "6-1-2", text: "슬픔–실망을 구분하려는 시도를 보인다." },
+          { code: "6-1-3", text: "화남–짜증, 기쁨–흥분 등 유사 감정을 점차 구분하게 된다." },
+          { code: "6-2-1", text: "감정 이유에 대한 설명을 들으면 이해하려는 태도를 보인다." },
+          { code: "6-2-2", text: "같은 유형의 오류가 점차 줄어드는 경향이 있다." },
+          { code: "6-2-3", text: "같은 문제를 다시 제시했을 때 정답으로 수정하는 경우가 늘어난다." }
+        ]
+      },
+      {
+        id: "sec7",
+        title: "7. 선택 과정의 인지 전략 및 참여도",
+        items: [
+          { code: "7-1-1", text: "문제가 제시되면 상황을 한 번 떠올리거나 되짚어 보려 한다." },
+          { code: "7-1-2", text: "선택 전 사건의 단서(무엇이 있었는지)를 하나 이상 떠올리거나 말한다." },
+          { code: "7-1-3", text: "충동적으로 선택하기보다 단서를 확인하는 모습을 보인다." },
+          { code: "7-2-1", text: "“왜 그렇게 골랐어?”라는 질문에 단서(상황, 행동 등) 기반 설명을 시도한다." },
+          { code: "7-2-2", text: "동화 듣기와 감정 선택 활동에 일정 시간 이상 집중을 유지한다." },
+          { code: "7-2-3", text: "오답이 나와도 과도한 감정 폭발 없이 활동을 이어간다." }
+        ]
+      }
+    ];
+
+    function createSection(section) {
+      const card = document.createElement("div");
+      card.className = "section-card";
+      card.dataset.sectionId = section.id;
+
+      const header = document.createElement("div");
+      header.className = "section-header";
+
+      const title = document.createElement("div");
+      title.className = "section-title";
+      title.textContent = section.title;
+
+      const scoreInfo = document.createElement("div");
+      scoreInfo.className = "section-score";
+      scoreInfo.innerHTML = `
+        섹션 점수: <span class="section-total" data-section="${section.id}">0</span>점
+        · 평균 <span class="section-avg" data-section="${section.id}">0.0</span>
+        · 응답 <span class="section-count" data-section="${section.id}">0</span>문항
+      `;
+
+      header.appendChild(title);
+      header.appendChild(scoreInfo);
+
+      const table = document.createElement("table");
+
+      const thead = document.createElement("thead");
+      const headRow = document.createElement("tr");
+      const thItem = document.createElement("th");
+      thItem.className = "item-header";
+      thItem.textContent = "문항";
+      headRow.appendChild(thItem);
+
+      for (let i = 0; i <= 3; i++) {
+        const thScore = document.createElement("th");
+        thScore.textContent = i + "점";
+        headRow.appendChild(thScore);
+      }
+      const thNA = document.createElement("th");
+      thNA.textContent = "N/A";
+      headRow.appendChild(thNA);
+      
+      thead.appendChild(headRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+
+      section.items.forEach(item => {
+        const row = document.createElement("tr");
+
+        const tdLabel = document.createElement("td");
+        tdLabel.className = "item-label";
+        const codeSpan = document.createElement("span");
+        codeSpan.className = "item-code";
+        codeSpan.textContent = item.code;
+        const textSpan = document.createElement("span");
+        textSpan.textContent = item.text;
+        tdLabel.appendChild(codeSpan);
+        tdLabel.appendChild(textSpan);
+
+        row.appendChild(tdLabel);
+       
+        for (let score = 0; score <= 3; score++) {
+          
+          const tdRadio = document.createElement("td");
+          const wrapper = document.createElement("div");
+          wrapper.className = "radio-group";
+
+          const label = document.createElement("label");
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = item.code;
+          input.value = score;
+          input.dataset.sectionId = section.id;
+          input.dataset.itemCode = item.code;
+          input.dataset.toggleable = "true";
+
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(String(score)));
+          wrapper.appendChild(label);
+          tdRadio.appendChild(wrapper);
+          row.appendChild(tdRadio);
+        }
+
+        const tdNA = document.createElement("td");
+        const wrapperNA = document.createElement("div");
+        wrapperNA.className = "radio-group";
+
+        const labelNA = document.createElement("label");
+        const inputNA = document.createElement("input");
+        inputNA.type = "radio";
+        inputNA.name = item.code;
+        inputNA.value = "na";
+        inputNA.dataset.sectionId = section.id;
+        inputNA.dataset.itemCode = item.code;
+        inputNA.dataset.toggleable = "true";
+
+        labelNA.appendChild(inputNA);
+        labelNA.appendChild(document.createTextNode("N/A"));
+        wrapperNA.appendChild(labelNA);
+        tdNA.appendChild(wrapperNA);
+        row.appendChild(tdNA)
+
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+      card.appendChild(header);
+      card.appendChild(table);
+
+      const memoLabel = document.createElement("div");
+      memoLabel.className = "memo-label";
+      memoLabel.textContent = "섹션 메모 (강점 / 어려움 / 관찰 소감)";
+      const memo = document.createElement("textarea");
+      memo.className = "memo";
+      memo.dataset.sectionId = section.id;
+      memo.placeholder = "예: 상황 단서는 잘 활용하지만, 모호한 상황에서 추론이 어려움.";
+
+      card.appendChild(memoLabel);
+      card.appendChild(memo);
+
+      return card;
+    }
+
+    function updateScores() {
+let globalTotal = 0;
+  let globalCount = 0;
+
+  checklistData.forEach((section) => {
+    let sectionTotal = 0;
+    let sectionCount = 0;
+
+    section.items.forEach((item) => {
+      const checked = document.querySelector(`input[name="${item.code}"]:checked`);
+      if (!checked) return;
+
+      const val = checked.value;
+
+      // N/A 이면 점수/문항수 계산에서 제외
+      if (val === "na") {
+        return;
+      }
+
+      const numVal = parseInt(val, 10);
+      if (!Number.isNaN(numVal)) {
+        sectionTotal += numVal;
+        sectionCount += 1;
+      }
+    });
+
+    const sectionTotalElem = document.querySelector(
+      `.section-total[data-section="${section.id}"]`
+    );
+    const sectionAvgElem = document.querySelector(
+      `.section-avg[data-section="${section.id}"]`
+    );
+    const sectionCountElem = document.querySelector(
+      `.section-count[data-section="${section.id}"]`
+    );
+
+    if (sectionTotalElem && sectionAvgElem && sectionCountElem) {
+      sectionTotalElem.textContent = sectionTotal;
+      sectionCountElem.textContent = sectionCount;
+      sectionAvgElem.textContent =
+        sectionCount > 0 ? (sectionTotal / sectionCount).toFixed(2) : "0.0";
+    }
+
+    globalTotal += sectionTotal;
+    globalCount += sectionCount;
+  });
+
+  const globalTotalElem = document.getElementById("global-total");
+  const globalAvgElem = document.getElementById("global-avg");
+  const globalCountElem = document.getElementById("global-count");
+
+  globalTotalElem.textContent = globalTotal;
+  globalCountElem.textContent = globalCount;
+  globalAvgElem.textContent =
+    globalCount > 0 ? (globalTotal / globalCount).toFixed(2) : "0.0";
+}
+
+
+    function collectData() {
+      const responses = {};
+      checklistData.forEach(section => {
+        section.items.forEach(item => {
+          const checked = document.querySelector(`input[name="${item.code}"]:checked`);
+          if (checked) {
+            const v = checked.value;
+            responses[item.code] = v === "na" ? "NA" : parseInt(v,10);
+          }
+        });
+      });
+
+      const sectionMemos = {};
+      document.querySelectorAll("textarea.memo").forEach(textarea => {
+        const secId = textarea.dataset.sectionId;
+        sectionMemos[secId] = textarea.value || "";
+      });
+
+      const globalNotes = document.getElementById("global-notes").value || "";
+
+      return {
+        checklistVersion: "1.1-situation-based",
+        savedAt: new Date().toISOString(),
+        responses,
+        sectionMemos,
+        globalNotes
+      };
+    }
+
+    function exportData() {
+      const data = collectData();
+      const json = JSON.stringify(data, null, 2);
+      const blob = new Blob([json], { type: "application/json" });
+
+      const dateStr = new Date().toISOString().slice(0, 10);
+      const defaultName = `감정체크리스트_${dateStr}.json`;
+      const userFileName = window.prompt(
+        "저장할 파일 이름을 입력하세요 (확장자 .json 포함 또는 제외 가능)",
+        defaultName
+      );
+
+      if(userFileName === null){
+        return;
+      }
+
+      let finalName = userFileName.trim();
+      if(finalName === ""){
+        finalName = defaultName
+      }
+      if(!finalName.toLowerCase().endsWith(".json")){
+        finalName += ".json";
+      }
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElemnt("a");
+      a.href = url;
+      a.download = finalName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function applyData(data) {
+      if (!data || !data.responses) return;
+
+      // 점수
+      Object.entries(data.responses).forEach(([code, val]) => {
+        let selector;
+        if(val ==="NA"){
+          selector = `input[name = "${code}"][value="na"]`;
+        }else{
+          selector = `input[name = "${code}"][value="${val}"]`;
+        }
+        const input = document.querySelector(selector);
+        if(input){
+          input.checked = true;
+          input.dataset.checked = "true";
+        }
+      });
+
+      // 섹션 메모
+      if (data.sectionMemos) {
+        Object.entries(data.sectionMemos).forEach(([secId, text]) => {
+           `textarea.memo[data-section-id="${secId}"], textarea.memo[data-sectionid="${secId}"], textarea.memo[data-section-id="${secId}"]`
+          if (textarea) {
+            textarea.value = text;
+          }
+        });
+      }
+
+      // 종합 의견
+      if (typeof data.globalNotes === "string") {
+        document.getElementById("global-notes").value = data.globalNotes;
+      }
+
+      updateScores();
+    }
+
+    function init() {
+      const container = document.getElementById("sections-container");
+      checklistData.forEach(section => {
+        const secElem = createSection(section);
+        container.appendChild(secElem);
+      });
+
+      document.addEventListener("click", (e) => {
+        const target = e.target;
+        if(
+          target &&
+          target.matches("input[type='radio'][data-toggleable='true']")
+        ){
+          const name = target.name;
+          const wasChecked = target.dataset.checked === "true";
+
+          document
+            .querySelectorAll(`input[type='radio'][name='${name}']`)
+            .forEach((r)=> {
+              r.dataset.checked = "false";
+            });
+
+          if(wasChecked){
+            target.checked = false;
+            target.dataset.checked = "false";
+          }else{
+            target.checked= true;
+            target.dataset.checked = "true"
+          }
+
+          updateScores();
+        }
+    })
+
+      document.getElementById("btn-export").addEventListener("click", exportData);
+
+      const importInput = document.getElementById("file-import");
+      importInput.addEventListener("change", (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            const data = JSON.parse(ev.target.result);
+            applyData(data);
+          } catch (err) {
+            alert("JSON 파일을 읽는 중 오류가 발생했습니다.");
+          } finally {
+            importInput.value = "";
+          }
+        };
+        reader.readAsText(file, "utf-8");
+      });
+
+      document.getElementById("btn-print").addEventListener("click", () => {
+        window.print();
+      });
+
+      updateScores();
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>

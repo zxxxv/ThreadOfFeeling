@@ -6,7 +6,9 @@ namespace Components
     [CreateAssetMenu(fileName = "NewStory", menuName = "GameData/Story")]
     public class Story : ScriptableObject {
         [Header("스토리 기본 정보")]
-        [Tooltip("동화 제목 (예: 흥부와 놀부)")]
+        [Tooltip("동화 ID")]
+        public int storyId;
+        [Tooltip("동화 제목")]
         public string storyTitle;
     
         [Tooltip("동화 선택 씬의 팝업에 표시될 커버 이미지")]

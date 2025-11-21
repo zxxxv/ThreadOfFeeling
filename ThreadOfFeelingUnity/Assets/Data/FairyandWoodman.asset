@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f30d55231bae6c44b96dac5ec917bc5, type: 3}
   m_Name: FairyandWoodman
   m_EditorClassIdentifier: 
+  storyId: 2
   storyTitle: "\uC120\uB140\uC640 \uB098\uBB34\uAFBC "
   storyCoverImage: {fileID: 1546950951814195137, guid: cb53f2ad9346347cda0c94caaa82e9d6, type: 3}
   storyDescription: "\uC120\uB140\uC640 \uB098\uBB34\uAFBC\uC774 \uC788\uC5C8\uC74C "

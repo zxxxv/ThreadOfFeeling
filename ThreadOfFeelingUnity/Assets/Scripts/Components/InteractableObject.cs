@@ -17,13 +17,13 @@ namespace Components
         [Tooltip("현재 대화의 인덱스")]
         public int talkIndex = 0;
 
-        private MainSceneUI uiManager; 
-
-        private static MainSceneUI _cachedUIManager;
+        private VillageSceneUI uiManager; 
+        private static VillageSceneUI _cachedUIManager;
+        //private GameState previousState;
 
         void Start() {
             if (_cachedUIManager == null) {
-                _cachedUIManager = GameObject.FindFirstObjectByType<MainSceneUI>();
+                _cachedUIManager = GameObject.FindFirstObjectByType<VillageSceneUI>();
                 if (_cachedUIManager == null) {
                     Debug.LogError($"[InteractableObject: {id}] 씬에서 MainSceneUI를 찾을 수 없습니다! MainSceneUI 스크립트가 씬의 Canvas 등에 붙어있는지 확인하세요.");
                     return;
@@ -34,7 +34,7 @@ namespace Components
 
         public void HandleInteraction() {
             if (!isAction) {
-                GameManager.Instance.PauseGame();
+                GameManager.Instance.EnterTalkState();
                 isAction = true;
                 ProceedTalk();
             }
@@ -89,18 +89,7 @@ namespace Components
                 uiManager.HideTalkPanel();
                 uiManager.ShowChoiceButtons(false);
             }
-            GameManager.Instance.ResumeGame();
-        }
-
-        public bool getIsAction() {
-            return isAction;
-        }
-
-        public void Action(GameObject scanObj) 
-        {
-            // PlayerController의 원본 코드가 Action()을 호출하면,
-            // 새 방식인 HandleInteraction()을 대신 호출하도록 연결
-            HandleInteraction();
+            GameManager.Instance.ExitTalkState();
         }
     }
 }

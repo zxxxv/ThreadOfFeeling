@@ -36,7 +36,7 @@ namespace UI
 
         public void ShowStoryDetails(Story data) {
             if (data == null) return;
-
+            SoundManager.Instance.SelectSound();
             pendingStory = data;
 
             if (detailTitle != null)
@@ -57,6 +57,7 @@ namespace UI
         }
 
         public void OnClickStartStory() {
+            SoundManager.Instance.SelectSound();
             if (pendingStory == null) {
                 Debug.LogError("[SelectionSceneUi] 시작할 동화가 선택되지 않았습니다.");
                 return;
@@ -67,6 +68,7 @@ namespace UI
         }
 
         public void OnClickClosePopup() {
+            SoundManager.Instance.SelectSound();
             storyDetailsPanel.SetActive(false);
             pendingStory = null;
         }

@@ -2,8 +2,8 @@ using Components;
 using Managers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Controller;
 
 namespace UI
 {
@@ -11,48 +11,40 @@ namespace UI
         [Header("스토리 UI")]
         [Tooltip("동화 이미지를 표시할 Image UI")]
         [SerializeField] private Image storyDisplayImage;
-        [Tooltip("시나리오의 텍스트(대사)를 표시할 Text UI")]
+        
+        [Tooltip("대사 텍스트가 포함된 부모 패널")]
+        [SerializeField] private GameObject dialoguePanel; 
         [SerializeField] private TextMeshProUGUI dialogueText;
 
-        [Header("퀴즈 UI")]
-        [Tooltip("퀴즈 UI의 부모 패널 (전체 켜고 끄기 용도)")]
-        [SerializeField] private GameObject questionPanel;
-        [SerializeField] private TextMeshProUGUI questionText;
-        [SerializeField] private Button answerButton1;
-        [SerializeField] private Button answerButton2;
-
-        [Header("피드백 UI")]
-        [Tooltip("퀴즈 정답/오답 피드백 패널")]
-        [SerializeField] private GameObject feedbackPanel;
-        [SerializeField] private TextMeshProUGUI feedbackText;
-        [SerializeField] private Button feedbackContinueButton;
+        [Header("퀴즈/보상 컨트롤러 연결")]
+        [SerializeField] private QuizController quizController;
+        [Tooltip("보상 팝업 로직을 담당하는 스크립트")]
+        [SerializeField] private RewardUI rewardPopup;
 
         private Story currentTale;
         private int currentScenarioIndex = 0;
-        private int currentQuizIndex = 0; // 추가: 현재 퀴즈 인덱스(0-2)
         private Scenario currentScenario; 
-    
-        private bool isQuizActive = false;
-        private bool isShowingStory = true;
-
-        private bool isAnswer1OnButton1; 
+     
+        // 퀴즈 중인지 여부는 컨트롤러를 통해 확인하거나 로직으로 관리
+        private bool IsQuizMode => quizController != null && quizController.IsActive;
 
         protected override void Start() {
             base.Start();
 
+            // 컨트롤러 자동 찾기
+            if (quizController == null) quizController = GetComponentInChildren<QuizController>();
+            if (rewardPopup == null) rewardPopup = GetComponentInChildren<RewardUI>();
+
+            // 보상 팝업 초기화
+            if (rewardPopup != null) rewardPopup.Init();
+
             currentTale = DataManager.Instance.selectedTale;
 
             if (currentTale == null || currentTale.scenarios.Count == 0) {
-                Debug.LogError("[StorySceneUi] 선택된 동화 데이터(StoryData)가 없거나 시나리오가 비어있습니다. 선택 씬으로 돌아갑니다.");
+                Debug.LogError("[StorySceneUi] 선택된 동화 데이터가 없습니다.");
                 GameManager.Instance.LoadSelectionScene();
                 return;
             }
-
-            answerButton1.onClick.AddListener(() => OnAnswerClicked(0));
-            answerButton2.onClick.AddListener(() => OnAnswerClicked(1));
-        
-            questionPanel.SetActive(false);
-            feedbackPanel.SetActive(false);
 
             ShowCurrentScenario();
         }
@@ -60,187 +52,91 @@ namespace UI
         protected override void Update() {
             base.Update();
 
-            if (isQuizActive) {
-                // 퀴즈 질문이 활성화된 경우 -> 1, 2번 키로 답변
-                if (questionPanel.activeInHierarchy) {
-                    if (InputManager.Instance.GetNOneKeyDown()) {
-                        OnAnswerClicked(0);
-                    }
-                    else if (InputManager.Instance.GetNTwoKeyDown()) {
-                        OnAnswerClicked(1);
-                    }
-                }
-                // 오답 피드백 패널이 활성화된 경우 -> 스페이스바로 다시 시도
-                else if (feedbackPanel.activeInHierarchy) {
-                    // 오답 시 다시 시도 버튼을 스페이스바로 누름
-                    if (InputManager.Instance.GetSpaceKeyDown()) {
-                        RetryQuiz();
-                    }
-                }
+            // 1. 퀴즈 모드일 때: 입력을 퀴즈 컨트롤러에 위임
+            if (IsQuizMode) {
+                quizController.HandleInput();
                 return;
             }
 
+            // 2. 스토리 모드일 때: 스페이스바로 진행
             if (InputManager.Instance.GetSpaceKeyDown()) {
-                if (isShowingStory) {
-                    // 스토리 진행 중 스페이스바 -> 퀴즈 또는 다음 시나리오
-                    bool hasQuiz = currentScenario.quizzes != null && currentScenario.quizzes.Count > 0;
-                    if (hasQuiz) {
-                        ShowQuiz();
-                    }
-                    else {
-                        ShowNextScenario();
-                    }
-                }
-                else {
-                    // 정답 피드백 확인 중 스페이스바 -> 다음 시나리오
-                    // (정답 시 OnAnswerClicked에서 isQuizActive = false, isShowingStory = false가 됨)
-                    ShowNextScenario();
-                }
+                SoundManager.Instance.SelectSound();
+                CheckAndStartQuizOrNext();
             }
         }
 
+        private void CheckAndStartQuizOrNext() {
+            // 현재 시나리오에 퀴즈가 있는지 확인
+            bool hasQuiz = currentScenario.quizzes != null && currentScenario.quizzes.Count > 0;
+            
+            if (hasQuiz) {
+                StartQuizMode();
+            }
+            else {
+                ShowNextScenario();
+            }
+        }
+
+        private void StartQuizMode() {
+            // 퀴즈 시작 (퀴즈가 다 끝나면 ShowNextScenario를 실행하도록 콜백 전달)
+            quizController.StartQuizSequence(currentScenario.quizzes, OnQuizSequenceFinished);
+        }
+
+        // 퀴즈 컨트롤러가 모든 퀴즈를 끝내면 호출됨
+        private void OnQuizSequenceFinished() {
+            ShowNextScenario();
+        }
+
         public void ShowCurrentScenario() {
-            isQuizActive = false;
-            isShowingStory = true;
-            currentQuizIndex = 0; // 퀴즈 인덱스 초기화
-        
-            questionPanel.SetActive(false);
-            feedbackPanel.SetActive(false);
-        
+            // 스토리 UI 켜기
+            if (dialoguePanel != null) dialoguePanel.SetActive(true);
+            else if (dialogueText != null) dialogueText.gameObject.SetActive(true);
+
             currentScenario = currentTale.scenarios[currentScenarioIndex];
 
             if (storyDisplayImage != null)
                 storyDisplayImage.sprite = currentScenario.image;
-        
+            
             if (dialogueText != null)
                 dialogueText.text = currentScenario.dialogueText;
-        }
 
-        public void ShowQuiz() {
-            //  퀴즈 유효성 검사
-            if (currentScenario.quizzes == null || 
-                currentQuizIndex >= currentScenario.quizzes.Count)
-            {
-                ShowNextScenario();
-                return;
-            }
-
-            Question currentQuiz = currentScenario.quizzes[currentQuizIndex];
-
-            // 퀴즈가 비어있는지 체크
-            if (string.IsNullOrEmpty(currentQuiz.questionText))
-            {
-                ShowNextScenario();
-                return;
-            }
-
-            isQuizActive = true;
-            isShowingStory = false;
-
-            // 퀴즈 UI 설정 및 표시
-            questionText.text = currentQuiz.questionText;
-            // 퀴즈 선택지 랜덤 배치
-            if (Random.value < 0.5f) {
-                answerButton1.GetComponentInChildren<TextMeshProUGUI>().text = currentQuiz.answer1;
-                answerButton2.GetComponentInChildren<TextMeshProUGUI>().text = currentQuiz.answer2;
-                isAnswer1OnButton1 = true;
-            }
-            else {
-                answerButton1.GetComponentInChildren<TextMeshProUGUI>().text = currentQuiz.answer2;
-                answerButton2.GetComponentInChildren<TextMeshProUGUI>().text = currentQuiz.answer1;
-                isAnswer1OnButton1 = false;
-            }
-
-            questionPanel.SetActive(true);
-        }
-
-        public void OnAnswerClicked(int clickedButtonIndex) {
-            Question currentQuiz = currentScenario.quizzes[currentQuizIndex]; // 현재 퀴즈 가져오기
-            questionPanel.SetActive(false);
-            feedbackPanel.SetActive(true);
-        
-            EventSystem.current.SetSelectedGameObject(null);
-
-
-            feedbackContinueButton.onClick.RemoveAllListeners();
-
-            int logicalAnswerIndex;
-            if (isAnswer1OnButton1) {
-                // 정방향 배치
-                logicalAnswerIndex = clickedButtonIndex;
-            }
-            else {
-                // 역방향 배치
-                logicalAnswerIndex = 1 - clickedButtonIndex;
-            }
-
-            // 정답/오답 확인
-            if (logicalAnswerIndex == currentQuiz.correctAnswerIndex) {
-                // 정답
-                feedbackText.text = currentQuiz.correctFeedback;
-                feedbackContinueButton.gameObject.SetActive(false); 
-                isQuizActive = false; 
-                isShowingStory = false;
-
-                Debug.Log($"[StorySceneUi] 퀴즈 {currentQuizIndex + 1}/3 정답!");
-            }
-            else {
-                // 오답
-                feedbackText.text = currentQuiz.wrongFeedback;
-                feedbackContinueButton.gameObject.SetActive(true);
-                feedbackContinueButton.onClick.AddListener(RetryQuiz);
-                feedbackContinueButton.GetComponentInChildren<TextMeshProUGUI>().text = "다시 시도";
-                isQuizActive = true; 
-                isShowingStory = false;
-            }
-        }
-
-        public void RetryQuiz() {
-            feedbackPanel.SetActive(false); 
-            questionPanel.SetActive(true); 
-            isQuizActive = true;
-            isShowingStory = false; 
-        }
-
-        public void ShowNextQuizOrScenario() {
-            feedbackPanel.SetActive(false);
-
-            currentQuizIndex++;
-
-            // 현재 시나리오의 퀴즈가 남아있는지 확인
-            if (currentQuizIndex < currentScenario.quizzes.Count)
-            {
-                // 다음 퀴즈 표시
-                Debug.Log($"[StorySceneUi] 다음 퀴즈 ({currentQuizIndex + 1}/3)");
-                ShowQuiz();
-            }
-            else
-            {
-                // 모든 퀴즈 완료 -> 다음 시나리오로
-                Debug.Log($"[StorySceneUi] 시나리오 {currentScenarioIndex + 1} 완료");
-                ShowNextScenario();
+            if (DataManager.Instance.IsTtsUsed()) {
+                // TODO: TTS 재생 로직 실행
             }
         }
 
         public void ShowNextScenario() {
             currentScenarioIndex++;
-            currentQuizIndex = 0; //
 
             if (currentScenarioIndex < currentTale.scenarios.Count) {
                 ShowCurrentScenario();
             }
             else {
                 Debug.Log($"[StorySceneUi] '{currentTale.storyTitle}' 이야기 끝");
-                GiveReward();
-                OnClickGoToSelection();
+                HandleStoryEnd();
             }
         }
 
-        public void GiveReward() {
+        private void HandleStoryEnd() {
+            // 보상 아이템 지급 (자동 저장)
             if (currentTale.storyReward != null) {
-                Debug.Log($"[StorySceneUi] 보상 획득: {currentTale.storyReward.itemName}");
-                // 인벤토리 시스템에 아이템 추가 구현하기
-                // DataManager.Instance.Inventory.AddItem(currentTale.storyReward);
+                DataManager.Instance.AddRewardItem(currentTale.storyReward);
+            }
+    
+            // 클리어 기록 저장 (자동 저장)
+            DataManager.Instance.AddClearedStory(currentTale.storyId);
+
+            // UI 표시 위임
+            if (currentTale.storyReward != null && rewardPopup != null) {
+                // 대화창 숨기기
+                if (dialoguePanel != null) dialoguePanel.SetActive(false);
+                
+                // 팝업 표시 (닫히면 선택 씬으로 이동)
+                rewardPopup.Show(currentTale.storyReward, OnClickGoToSelection);
+            }
+            else {
+                // 보상이 없거나 팝업 스크립트가 없으면 바로 이동
+                OnClickGoToSelection();
             }
         }
     }

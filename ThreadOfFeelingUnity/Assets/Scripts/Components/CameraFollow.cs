@@ -9,7 +9,7 @@ namespace Components
 
         void LateUpdate() {
             if (target == null) {
-                GameObject player = GameObject.FindGameObjectWithTag("PlayerCat");
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
                 if (player != null) {
                     target = player.transform;
                 }   

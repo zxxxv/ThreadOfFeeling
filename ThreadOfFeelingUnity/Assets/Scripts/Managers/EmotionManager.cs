@@ -26,7 +26,7 @@ namespace Managers {
             var psi = new ProcessStartInfo()
             {
                 FileName = "python3",
-                Arguments = "../python/main_demo.py",
+                Arguments = "../python/main_rule_based_classifier.py",
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
@@ -43,7 +43,13 @@ namespace Managers {
         {
             if (string.IsNullOrEmpty(e.Data)) return;
 
-            _currentEmotion = EmotionStringToNumber(e.Data.Trim());
+            string msg = e.Data.Trim();
+            int next = EmotionStringToNumber(msg);
+
+            if(next != _currentEmotion)
+            {
+                _currentEmotion = next;
+            }
         }
 
         private int EmotionStringToNumber(string s)
@@ -53,7 +59,14 @@ namespace Managers {
                 "JOY" => 1,
                 "SAD" => 2,
                 "ANGER" => 3,
-                "DISLIKE" => 4
+                "DISLIKE" => 4,
+
+                "NEUTRAL" => _currentEmotion,
+                "NONE" => _currentEmotion,
+                "UNKNOWN" => _currentEmotion,
+                "HOLD" => _currentEmotion,
+
+                _ => _currentEmotion
             };
         }
 
