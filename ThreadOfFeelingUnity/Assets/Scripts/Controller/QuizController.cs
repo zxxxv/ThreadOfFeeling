@@ -1,62 +1,67 @@
+using Components;
+using Managers;
+using PythonManagers;
 using System;
 using System.Collections.Generic;
-using Managers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using Components;
-using PythonManagers;
 using UnityEngine.EventSystems;
-using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 namespace Controller {
     public class QuizController : MonoBehaviour {
         [Header("퀴즈 UI")]
-        [Tooltip("퀴즈 UI의 부모 패널")]
         [SerializeField] private GameObject questionPanel;
         [SerializeField] private TextMeshProUGUI questionText;
+        
+        [Header("선택지 버튼")]
         [SerializeField] private Button answerButton1;
         [SerializeField] private Button answerButton2;
+        [SerializeField] private Button answerButton3;
+        [SerializeField] private Button answerButton4;
+
+        [Header("버튼 내부 이미지")]
+        [SerializeField] private GameObject[] buttonImages; 
 
         [Header("피드백 UI")]
-        [Tooltip("퀴즈 정답/오답 피드백 패널")]
         [SerializeField] private GameObject feedbackPanel;
         [SerializeField] private TextMeshProUGUI feedbackText;
         [SerializeField] private Button feedbackContinueButton;
 
-        // 내부 상태 변수
         private List<Question> currentQuizzes;
         private int currentQuizIndex = 0;
-        private bool isAnswer1OnButton1;
+        private bool isAnswer1OnButton1; 
         private bool isWaitingForNext = false;
-
-        // 외부로 알릴 이벤트 (퀴즈가 다 끝났을 때)
         private Action onAllQuizzesCompleted;
+
+        private bool IsFourChoiceMode => currentQuizzes != null && currentQuizIndex < currentQuizzes.Count && 
+                                         currentQuizzes[currentQuizIndex].targetType == StoryType.TypeB;
 
         public bool IsActive => questionPanel.activeInHierarchy || feedbackPanel.activeInHierarchy;
 
         private void Start() {
-            // 버튼 이벤트 연결
-            answerButton1.onClick.AddListener(() => OnAnswerClicked(0));
-            answerButton2.onClick.AddListener(() => OnAnswerClicked(1));
-            // 초기화            
+            if(answerButton1) answerButton1.onClick.AddListener(() => OnAnswerClicked(1));
+            if(answerButton2) answerButton2.onClick.AddListener(() => OnAnswerClicked(2));
+            if(answerButton3) answerButton3.onClick.AddListener(() => OnAnswerClicked(3));
+            if(answerButton4) answerButton4.onClick.AddListener(() => OnAnswerClicked(4));
             questionPanel.SetActive(false);
             feedbackPanel.SetActive(false);
         }
 
-        // StorySceneUi에서 호출해서 입력을 넘겨줌
         public void HandleInput() {
-            int motionInput = InputManager.Instance.GetMotionInput();
+            int motionInput = MotionInputManager.Instance.GetMotionInput();
 
             if (questionPanel.activeInHierarchy) {
-                if (InputManager.Instance.GetNOneKeyDown() || motionInput == 10) {
-                    OnAnswerClicked(0);
+                if (IsFourChoiceMode) {
+                    if (InputManager.Instance.GetNOneKeyDown() || motionInput == 10) OnAnswerClicked(0);
+                    else if (InputManager.Instance.GetNTwoKeyDown() || motionInput == 20) OnAnswerClicked(1);
+                    else if (Input.GetKeyDown(KeyCode.Alpha3) || motionInput == 30) OnAnswerClicked(2);
+                    else if (Input.GetKeyDown(KeyCode.Alpha4) || motionInput == 40) OnAnswerClicked(3);
+                } else {
+                    if (InputManager.Instance.GetNOneKeyDown() || motionInput == 10) OnAnswerClicked(0);
+                    else if (InputManager.Instance.GetNTwoKeyDown() || motionInput == 20) OnAnswerClicked(1);
                 }
-                else if (InputManager.Instance.GetNTwoKeyDown() || motionInput == 20) {
-                    OnAnswerClicked(1);
-                }
-            }
-            else if (feedbackPanel.activeInHierarchy) {
+            } else if (feedbackPanel.activeInHierarchy) {
                 if (InputManager.Instance.GetSpaceKeyDown()) {
                     SoundManager.Instance.SelectSound();
                     if (isWaitingForNext) ShowNextQuiz();
@@ -65,10 +70,7 @@ namespace Controller {
             }
         }
 
-        // 외부에서 퀴즈 시작을 요청할 때 호출        
         public void StartQuizSequence(List<Question> quizzes, Action onComplete) {
-            InputManager.Instance.SetHandMode();
-
             currentQuizzes = quizzes;
             onAllQuizzesCompleted = onComplete;
             currentQuizIndex = 0;
@@ -82,60 +84,66 @@ namespace Controller {
             }
 
             Question q = currentQuizzes[currentQuizIndex];
-            
+
+            // [추가] 텍스트가 없는 퀴즈는 데이터 오류이므로 스킵
+            if (string.IsNullOrWhiteSpace(q.questionText)) {
+                ShowNextQuiz();
+                return;
+            }
+
+            bool showImages = (q.targetType == StoryType.TypeB);
+            if (buttonImages != null) {
+                foreach (var img in buttonImages) if (img != null) img.SetActive(showImages);
+            }
+
+            if (q.targetType == StoryType.TypeB) {
+                MotionInputManager.Instance.SetEmotionMode();
+                SetButtonActive(answerButton1, true); SetButtonActive(answerButton2, true);
+                SetButtonActive(answerButton3, true); SetButtonActive(answerButton4, true);
+                SetButtonText(answerButton1, q.answer1); SetButtonText(answerButton2, q.answer2);
+                SetButtonText(answerButton3, q.answer3); SetButtonText(answerButton4, q.answer4);
+            } else {
+                MotionInputManager.Instance.SetHandMode();
+                SetButtonActive(answerButton1, true); SetButtonActive(answerButton2, true);
+                SetButtonActive(answerButton3, false); SetButtonActive(answerButton4, false);
+                if (UnityEngine.Random.value < 0.5f) {
+                    SetButtonText(answerButton1, q.answer1); SetButtonText(answerButton2, q.answer2);
+                    isAnswer1OnButton1 = true;
+                } else {
+                    SetButtonText(answerButton1, q.answer2); SetButtonText(answerButton2, q.answer1);
+                    isAnswer1OnButton1 = false;
+                }
+            }
+
             questionPanel.SetActive(true);
             feedbackPanel.SetActive(false);
-
-            // 퀴즈 텍스트 (번호 포함)
             questionText.text = $"#퀴즈. {q.questionText}";
-
-            // 퀴즈 나올 때 이전 TTS 끄고 질문 TTS 재생
             SoundManager.Instance.StopTTS();
-            if (q.questionVoice != null) {
-                SoundManager.Instance.PlayTTS(q.questionVoice);
-            }
-
-            if (Random.value < 0.5f) {
-                SetButtonText(answerButton1, q.answer1);
-                SetButtonText(answerButton2, q.answer2);
-                isAnswer1OnButton1 = true;
-            }
-            else {
-                SetButtonText(answerButton1, q.answer2);
-                SetButtonText(answerButton2, q.answer1);
-                isAnswer1OnButton1 = false;
-            }
+            if (q.questionVoice != null) SoundManager.Instance.PlayTTS(q.questionVoice);
         }
 
-        private void SetButtonText(Button btn, string text) {
-            btn.GetComponentInChildren<TextMeshProUGUI>().text = text;
-        }
+        private void SetButtonActive(Button btn, bool isActive) { if (btn != null) btn.gameObject.SetActive(isActive); }
+        private void SetButtonText(Button btn, string text) { if (btn != null) btn.GetComponentInChildren<TextMeshProUGUI>().text = text; }
 
         private void OnAnswerClicked(int clickedButtonIndex) {
             if (!questionPanel.activeInHierarchy) return;
             SoundManager.Instance.SelectSound();
             Question q = currentQuizzes[currentQuizIndex];
-            
             SoundManager.Instance.StopTTS();
-
             questionPanel.SetActive(false);
             feedbackPanel.SetActive(true);
-            
             EventSystem.current.SetSelectedGameObject(null);
             feedbackContinueButton.onClick.RemoveAllListeners();
 
-            int logicalAnswerIndex = isAnswer1OnButton1 ? clickedButtonIndex : 1 - clickedButtonIndex;
+            bool isCorrect = (q.targetType == StoryType.TypeB) ? (clickedButtonIndex == q.correctAnswerIndex) :
+                ((isAnswer1OnButton1 ? clickedButtonIndex : 1 - clickedButtonIndex) == q.correctAnswerIndex);
 
-            if (logicalAnswerIndex == q.correctAnswerIndex) {
-                // [정답]
+            if (isCorrect) {
                 SoundManager.Instance.RightSound();
                 feedbackText.text = q.correctFeedback;
                 SetupFeedbackButton("다음", ShowNextQuiz);
                 isWaitingForNext = true;
-                Debug.Log($"[QuizController] 정답! ({currentQuizIndex + 1}/{currentQuizzes.Count})");
-            }
-            else {
-                // [오답]
+            } else {
                 SoundManager.Instance.WrongSound();
                 feedbackText.text = q.wrongFeedback;
                 SetupFeedbackButton("다시 시도", RetryQuiz);
@@ -149,22 +157,17 @@ namespace Controller {
             feedbackContinueButton.onClick.AddListener(action);
         }
 
-        private void RetryQuiz() {
-            feedbackPanel.SetActive(false);
-            questionPanel.SetActive(true);
-        }
+        private void RetryQuiz() { feedbackPanel.SetActive(false); questionPanel.SetActive(true); }
 
         private void ShowNextQuiz() {
             currentQuizIndex++;
-            if (currentQuizIndex < currentQuizzes.Count) ShowQuiz();
-            else EndQuizSequence();
+            ShowQuiz();
         }
 
         private void EndQuizSequence() {
             questionPanel.SetActive(false);
             feedbackPanel.SetActive(false);
-            Debug.Log("[QuizController] 모든 퀴즈 완료");
-            onAllQuizzesCompleted?.Invoke(); // StorySceneUi占쏙옙 占싯몌옙
+            onAllQuizzesCompleted?.Invoke();
         }
     }
 }

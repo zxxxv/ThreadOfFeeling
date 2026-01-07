@@ -659,7 +659,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2DC\uC791\uD558\uAE30"
+  m_text: 'Start
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
   m_sharedMaterial: {fileID: 4689241269245727905, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
@@ -808,7 +810,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB2E4"
+  m_Text: 'C
+
+'
 --- !u!222 &395585649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1260,7 +1264,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &624778483
 CanvasRenderer:
@@ -1317,8 +1321,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1649,7 +1653,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB098\uAC00\uAE30"
+  m_text: 'Exit
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
   m_sharedMaterial: {fileID: 4689241269245727905, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
@@ -1798,7 +1804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB098"
+  m_Text: B
 --- !u!222 &773400255
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1891,8 +1897,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2102,8 +2108,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2641,7 +2647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00"
+  m_Text: A
 --- !u!222 &1026347913
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2863,7 +2869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC120\uB140\uC640 \uB098\uBB34\uAFBC\n"
+  m_text: The Fairy and the Woodman
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
   m_sharedMaterial: {fileID: 4689241269245727905, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
@@ -2890,8 +2896,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3463,7 +3469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB3CC\uC544\uAC00\uAE30"
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
   m_sharedMaterial: {fileID: 4689241269245727905, guid: 0784d573ce2eb0448848218e3190af59, type: 2}
@@ -4749,6 +4755,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2039044469}
     m_Modifications:
+    - target: {fileID: 262377465567616103, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
+      propertyPath: m_text
+      value: TTS Usage
+      objectReference: {fileID: 0}
+    - target: {fileID: 438119245381487978, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
+      propertyPath: m_text
+      value: Age
+      objectReference: {fileID: 0}
     - target: {fileID: 602758870428593130, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4760,6 +4774,10 @@ PrefabInstance:
     - target: {fileID: 602758870428593130, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UI.SelectionSceneUi, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091723557128226470, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
+      propertyPath: m_text
+      value: Gender
       objectReference: {fileID: 0}
     - target: {fileID: 3496083123748216422, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4773,6 +4791,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UI.SelectionSceneUi, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4142661200731125906, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
+      propertyPath: m_text
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906186375739350453, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
+      propertyPath: m_text
+      value: 'Continue
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 5584851615427998326, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
       propertyPath: radius
       value: 200
@@ -4783,7 +4811,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6418446913069190169, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998000354039702535, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
+      propertyPath: m_text
+      value: Save
       objectReference: {fileID: 0}
     - target: {fileID: 8187765430573371585, guid: f70cb15e6604ba94c97f3e11a129a587, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

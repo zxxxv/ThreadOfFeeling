@@ -1,6 +1,7 @@
 using Components;
 using Controller;
 using Managers;
+using PythonManagers;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -11,40 +12,35 @@ namespace UI
 {
     public class StorySceneUi : SceneUI {
         [Header("스토리 UI")]
-        [Tooltip("동화 이미지를 표시할 Image UI")]
         [SerializeField] private Image storyDisplayImage;
-        
-        [Tooltip("대사 텍스트가 포함된 부모 패널")]
         [SerializeField] private GameObject dialoguePanel; 
         [SerializeField] private TextMeshProUGUI dialogueText;
 
-        [Header("퀴즈/보상 컨트롤러 연결")]
+        [Header("컨트롤러 연결")]
         [SerializeField] private QuizController quizController;
-        [Tooltip("보상 팝업 로직을 담당하는 스크립트")]
         [SerializeField] private RewardUI rewardPopup;
 
         private Story currentTale;
         private StoryType currentType; 
         private int currentScenarioIndex = 0;
         private Scenario currentScenario; 
-     
-        // 퀴즈 중인지 여부는 컨트롤러를 통해 확인하거나 로직으로 관리
         private bool IsQuizMode => quizController != null && quizController.IsActive;
 
         protected override void Start() {
             base.Start();
-
-            // 컨트롤러 자동 찾기
             if (quizController == null) quizController = GetComponentInChildren<QuizController>();
             if (rewardPopup == null) rewardPopup = GetComponentInChildren<RewardUI>();
-
-            // 보상 팝업 초기화
             if (rewardPopup != null) rewardPopup.Init();
 
             currentTale = DataManager.Instance.selectedTale;
+            currentType = DataManager.Instance.selectedStoryType; 
+
+            if (MotionInputManager.Instance != null) {
+                if (currentType == StoryType.TypeB) MotionInputManager.Instance.SetEmotionMode();
+                else MotionInputManager.Instance.SetHandMode();
+            }
 
             if (currentTale == null || currentTale.scenarios.Count == 0) {
-                Debug.LogError("[StorySceneUi] 선택된 동화 데이터가 없습니다.");
                 GameManager.Instance.LoadSelectionScene();
                 return;
             }
@@ -54,14 +50,10 @@ namespace UI
 
         protected override void Update() {
             base.Update();
-
-            // 1. 퀴즈 모드일 때: 입력을 퀴즈 컨트롤러에 위임
             if (IsQuizMode) {
                 quizController.HandleInput();
                 return;
             }
-
-            // 2. 스토리 모드일 때: 스페이스바로 진행
             if (InputManager.Instance.GetSpaceKeyDown()) {
                 SoundManager.Instance.SelectSound();
                 CheckAndStartQuizOrNext();
@@ -71,80 +63,52 @@ namespace UI
         private void CheckAndStartQuizOrNext() {
             List<Question> validQuestions = new List<Question>();
 
-            if (currentScenario.quizzes != null)
-            {
+            if (currentScenario.quizzes != null) {
+                // [수정] 타입이 맞으면서 + 퀴즈 텍스트가 실제 존재하는 것만 필터링
                 validQuestions = currentScenario.quizzes
-                    .Where(q => q.isCommon || q.targetType == currentType)
+                    .Where(q => (q.isCommon || q.targetType == currentType) && !string.IsNullOrWhiteSpace(q.questionText))
                     .ToList();
             }
             
-            if (validQuestions.Count > 0) {
-                // 필터링된 퀴즈가 있다면 퀴즈 모드 시작
-                StartQuizMode(validQuestions);
-            }
-            else {
-                // 퀴즈가 없거나, 내 타입에 맞는 퀴즈가 없다면 바로 다음 장면으로
-                ShowNextScenario();
-            }
+            if (validQuestions.Count > 0) StartQuizMode(validQuestions);
+            else ShowNextScenario();
         }
 
         private void StartQuizMode(List<Question> questions) {
             quizController.StartQuizSequence(questions, OnQuizSequenceFinished);
         }
 
-        // 퀴즈 컨트롤러가 모든 퀴즈를 끝내면 호출됨
-        private void OnQuizSequenceFinished() {
-            ShowNextScenario();
-        }
+        private void OnQuizSequenceFinished() => ShowNextScenario();
 
         public void ShowCurrentScenario() {
-            // 스토리 UI 켜기
             if (dialoguePanel != null) dialoguePanel.SetActive(true);
-            else if (dialogueText != null) dialogueText.gameObject.SetActive(true);
-
             currentScenario = currentTale.scenarios[currentScenarioIndex];
+            if (storyDisplayImage != null) storyDisplayImage.sprite = currentScenario.image;
+            if (dialogueText != null) dialogueText.text = currentScenario.dialogueText;
 
-            if (storyDisplayImage != null)
-                storyDisplayImage.sprite = currentScenario.image;
-            
-            if (dialogueText != null)
-                dialogueText.text = currentScenario.dialogueText;
-
-            // 기존 소리 끄고 현재 시나리오 TTS 재생
             SoundManager.Instance.StopTTS();
-            if (currentScenario.ttsClip != null) {
-                SoundManager.Instance.PlayTTS(currentScenario.ttsClip);
-            }
+            if (currentScenario.ttsClip != null) SoundManager.Instance.PlayTTS(currentScenario.ttsClip);
         }
 
         public void ShowNextScenario() {
             currentScenarioIndex++;
-            if (currentScenarioIndex < currentTale.scenarios.Count) {
-                ShowCurrentScenario();
-            }
-            else {
-                HandleStoryEnd();
-            }
+            if (currentScenarioIndex < currentTale.scenarios.Count) ShowCurrentScenario();
+            else HandleStoryEnd();
         }
 
         private void HandleStoryEnd() {
             SoundManager.Instance.StopTTS();
-    
-            // 클리어 기록 저장 (자동 저장)
             DataManager.Instance.AddClearedStory(currentTale.storyId, currentType);
 
-            // UI 표시 위임
+            System.Action onSceneExit = () => {
+                if (MotionInputManager.Instance != null) MotionInputManager.Instance.StopAllProcesses();
+                OnClickGoToSelection(); 
+            };
+
             if (currentTale.storyReward != null && rewardPopup != null) {
-                // 대화창 숨기기
                 if (dialoguePanel != null) dialoguePanel.SetActive(false);
-                
-                // 팝업 표시 (닫히면 선택 씬으로 이동)
-                rewardPopup.Show(currentTale.storyReward, OnClickGoToSelection);
-            }
-            else {
-                // 보상이 없거나 팝업 스크립트가 없으면 바로 이동
-                OnClickGoToSelection();
-            }
+                rewardPopup.Show(currentTale.storyReward, onSceneExit);
+            } else onSceneExit();
         }
     }
 }

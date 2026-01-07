@@ -4,61 +4,83 @@ using UnityEngine;
 
 namespace PythonManagers {
     public class SelectHandsManager : MonoBehaviour {
-        public static SelectHandsManager Instance { get; private set; }
-        private Process _proc;
+        private static SelectHandsManager _instance;
+        private static bool _isQuitting = false;
 
-        // 인스펙터에서 값 변화를 보기 위해 SerializeField 유지
-        [SerializeField] 
-        private int _currentHand = 0;
+        public static SelectHandsManager Instance {
+            get {
+                if (_isQuitting) return null;
+                if (_instance != null) return _instance;
+                _instance = FindFirstObjectByType<SelectHandsManager>();
+                if (_instance == null && !_isQuitting) {
+                    GameObject container = new GameObject("SelectHandsManager");
+                    _instance = container.AddComponent<SelectHandsManager>();
+                }
+                return _instance;
+            }
+        }
+
+        private Process _proc;
+        [SerializeField] private int _currentHand = 0;
+        private DateTime _lastUpdateTime = DateTime.MinValue;
+        private const double InputDebounceMillis = 500; 
+
+        public bool IsRunning => _proc != null && !_proc.HasExited;
 
         private void Awake() {
-            if (Instance != null && Instance != this) {
+            if (_instance != null && _instance != this) {
                 Destroy(gameObject);
                 return;
             }
-            Instance = this;
-            StartPython(); // 시작 시 파이썬 가동
+            _instance = this;
+            _isQuitting = false;
         }
 
         private void OnDestroy() {
-            KillPythonProcess();
-            if (Instance == this) Instance = null;
+            if (_instance == this) _instance = null;
+            StopPythonProcess();
         }
-        
+
         private void OnApplicationQuit() {
-            KillPythonProcess();
+            _isQuitting = true;
+            StopPythonProcess();
         }
 
-        private void KillPythonProcess() {
-            try {
-                if (_proc != null && !_proc.HasExited) {
-                    _proc.Kill();
-                    _proc.Dispose();
-                    _proc = null;
+        public int GetHandCode() {
+            if (this == null) return 0;
+            int temp = _currentHand;
+            _currentHand = 0; // 값 소모(Consume)
+            return temp;
+        }
+
+        private void OnPythonOutput(object sender, DataReceivedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(e.Data)) return;
+            var data = e.Data.Trim().ToUpper();
+            int newCode = 0;
+
+            switch (data) {
+                case "LEFT": newCode = 10; break;
+                case "RIGHT": newCode = 20; break;
+                case "BOTH": case "NONE": newCode = 0; break;
+                default: return; 
+            }
+
+            if (newCode != _currentHand && newCode != 0) {
+                if ((DateTime.Now - _lastUpdateTime).TotalMilliseconds > InputDebounceMillis) {
+                    _currentHand = newCode;
+                    _lastUpdateTime = DateTime.Now;
+                    UnityEngine.Debug.Log($"<color=yellow>[Hand]</color> {data}");
                 }
-                UnityEngine.Debug.Log("Python Process Killed.");
-            }
-            catch (Exception e) {
-                UnityEngine.Debug.LogWarning($"SelectHandsManager: kill process failed: {e.Message}");
             }
         }
 
-        private void StartPython() {
+        public void StartPythonProcess() {
+            if (IsRunning) return;
             string projectRoot = System.IO.Directory.GetParent(Application.dataPath).FullName;
             string pythonExePath = System.IO.Path.Combine(projectRoot, "venv", "Scripts", "python.exe");
             string scriptPath = System.IO.Path.Combine(Application.streamingAssetsPath, "python", "main_rule_based_hands_filter.py");
 
-            UnityEngine.Debug.Log($"[SelectHandsManager] Python Exe: {pythonExePath}");
-            UnityEngine.Debug.Log($"[SelectHandsManager] Script: {scriptPath}");
-
-            if (!System.IO.File.Exists(pythonExePath)) {
-                UnityEngine.Debug.LogError($"[Error] 가상환경 Python 없음: {pythonExePath}");
-                return; 
-            }
-            if (!System.IO.File.Exists(scriptPath)) {
-                UnityEngine.Debug.LogError($"[Error] 스크립트 없음: {scriptPath}");
-                return;
-            }
+            if (!System.IO.File.Exists(pythonExePath) || !System.IO.File.Exists(scriptPath)) return;
 
             var psi = new ProcessStartInfo {
                 FileName = pythonExePath,
@@ -72,58 +94,21 @@ namespace PythonManagers {
             try {
                 _proc = new Process();
                 _proc.StartInfo = psi;
-
                 _proc.OutputDataReceived += OnPythonOutput;
-                _proc.ErrorDataReceived += (sender, args) => {
-                    if (!string.IsNullOrWhiteSpace(args.Data)) {
-                        //UnityEngine.Debug.LogError($"[Python Error]: {args.Data}");
-                    }
-                };
-
                 _proc.Start();
                 _proc.BeginOutputReadLine();
                 _proc.BeginErrorReadLine();
-                
-                UnityEngine.Debug.Log("Python Process Started via Virtual Environment (venv).");
-            }
-            catch (Exception e) {
-                UnityEngine.Debug.LogError($"Python 실행 실패: {e.Message}");
-            }
+            } catch (Exception e) { UnityEngine.Debug.LogError($"Hands 실행 실패: {e.Message}"); }
         }
 
-        private void OnPythonOutput(object sender, DataReceivedEventArgs e) {
-            if (string.IsNullOrWhiteSpace(e.Data)) return;
-            
-            // 공백 제거 및 대문자 변환 (혹시 모를 소문자 입력 방지)
-            var data = e.Data.Trim().ToUpper();
-            int newCode = 0;
-
-            // 문자열에 따른 코드 매핑
-            switch (data) {
-                case "LEFT":
-                    newCode = 10;
-                    break;
-                case "RIGHT":
-                    newCode = 20;
-                    break;
-                case "BOTH": // 둘 다 들었을 때는 선택 안 함(0) 혹은 필요한 로직 추가
-                    newCode = 0; 
-                    break;
-                case "NONE": // 손이 없으면 0
-                    newCode = 0;
-                    break;
-                default:
-                    // 이상한 값이 오면 무시하거나 0으로
-                    return; 
-            }
-
-            // 값이 바뀌었을 때만 업데이트하고 로그 출력
-            if (newCode != _currentHand) {
-                _currentHand = newCode;
-                UnityEngine.Debug.Log($"Hand Changed! Input: [{data}] -> Code: {_currentHand}");
-            }
+        public void StopPythonProcess() {
+            try {
+                if (_proc != null && !_proc.HasExited) {
+                    _proc.Kill();
+                    _proc.Dispose();
+                    _proc = null;
+                }
+            } catch { }
         }
-
-        public int GetHandCode() => _currentHand;
     }
 }

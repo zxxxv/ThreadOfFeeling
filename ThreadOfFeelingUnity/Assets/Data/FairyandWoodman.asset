@@ -13,41 +13,47 @@ MonoBehaviour:
   m_Name: FairyandWoodman
   m_EditorClassIdentifier: 
   storyId: 2
-  storyTitle: "\uC120\uB140\uC640 \uB098\uBB34\uAFBC "
+  storyTitle: The Fairy and the Woodman
   storyCoverImage: {fileID: 21300000, guid: 918ef8520e1ea49aaa776767c2c592da, type: 3}
-  storyDescription: "\uC120\uB140\uC640 \uB098\uBB34\uAFBC\uC774 \uC788\uC5C8\uC74C "
-  storyTag: 
-  storyReward: {fileID: 11400000, guid: b75ee65caa1ff0b41bc3fcebf913bac9, type: 2}
+  storyDescription: A woodman saves a deer from a hunter, and in return, the deer
+    tells him how to marry a celestial fairy by hiding her winged robe while she
+    bathes in a mountain pond; however, after they have children, the woodman eventually
+    shows her the robe, and she immediately flies back to heaven with their children.
+  storyTag: '#10 Scenes #30 Questions Each #Mirror'
+  storyReward: {fileID: 11400000, guid: ae23c891d49a3eb458c33943068fe986, type: 2}
   scenarios:
   - image: {fileID: -9062015590762506407, guid: d716fd643e1d04dfba6e00808c6d7ade, type: 3}
-    dialogueText: "\uB098\uBB34\uAFBC\uC774 \uC0B0\uC5D0\uC11C \uB098\uBB34\uB97C
-      \uD558\uACE0 \uC788\uC5B4\uC694. \uAC11\uC790\uAE30 \uC0AC\uC2B4 \uD55C \uB9C8\uB9AC\uAC00
-      \uB6F0\uC5B4\uC640\uC694. \"\uB098\uBB34\uAFBC\uB2D8, \uC81C\uBC1C \uC800 \uC880
-      \uC0B4\uB824\uC8FC\uC138\uC694!\" \uC0AC\uC2B4\uC740 \uC0AC\uB0E5\uAFBC\uC5D0\uAC8C
-      \uCAD3\uAE30\uACE0 \uC788\uC5B4\uC694. \uB5A8\uACE0 \uC788\uB294 \uC0AC\uC2B4\uC774
-      \uB108\uBB34 \uBD88\uC30D\uD574 \uBCF4\uC5EC\uC694."
-    ttsClip: {fileID: 0}
+    dialogueText: A woodman is chopping wood in the mountains. Suddenly, a deer runs
+      up to him. 'Mr. Woodman, please save me!' The deer is being chased by a hunter.
+      The trembling deer looks so pitiful.
+    ttsClip: {fileID: 8300000, guid: 79f5e7c104036394c950feaeec91a5bd, type: 3}
     quizzes:
-    - questionText: "\uC0AC\uB0E5\uAFBC\uC5D0\uAC8C \uCAD3\uAE30\uB294 \uC0AC\uC2B4\uC744
-        \uBD24\uC5B4\uC694. \uB098\uBB34\uAFBC\uC758 \uC9C0\uAE08 \uAE30\uBD84\uC740?"
+    - questionText: How does the woodman feel when he sees the deer being chased
+        by the hunter?
       questionVoice: {fileID: 0}
-      answer1: "\uBD88\uC30D\uD558\uACE0 \uB3C4\uC640\uC8FC\uACE0 \uC2F6\uC5B4\uC694"
-      answer2: "\uC2E0\uB098\uC694"
+      answer1: He feels a strong sense of pity.
+      answer2: He is thrilled.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! You have a heart as warm as the woodman's. He felt
+        deep pity for the poor deer and decided to save its life.
+      wrongFeedback: Not quite. Think about the poor deer trembling in fear. In such
+        a dangerous moment, would the woodman really feel excited? Try again!
       targetType: 0
       isCommon: 0
-    - questionText: "\uB204\uAD70\uAC00 \"\uB3C4\uC640\uC8FC\uC138\uC694!\"\uB77C\uACE0
-        \uB9D0\uD574\uC694. \uC5B4\uB5BB\uAC8C \uD574\uC57C \uD560\uAE4C\uC694?"
+    - questionText: How does the deer feel right now?
       questionVoice: {fileID: 0}
-      answer1: "\uC548\uC804\uD55C \uBC29\uBC95\uC73C\uB85C \uB3C4\uC640\uC8FC\uAC70\uB098
-        \uC5B4\uB978\uC744 \uBD88\uB7EC\uC694"
-      answer2: "\uBAA8\uB978 \uCC99\uD558\uACE0 \uAC00\uC694"
-      correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      answer1: Joy
+      answer2: Fearful
+      answer3: Anger
+      answer4: Disgust
+      correctAnswerIndex: 1
+      correctFeedback: Correct! The deer is trembling and asking for help because
+        it is in a pitiful and scary situation.
+      wrongFeedback: Not quite. The deer is being chased by a hunter, so it feels
+        very scared and sad.
+      targetType: 1
       isCommon: 0
     - questionText: "\uB098\uBB34\uAFBC\uC774 \uC0AC\uC2B4\uC744 \uB098\uBB47\uB354\uBBF8
         \uB4A4\uC5D0 \uC228\uACA8\uC92C\uC5B4\uC694. \uC0AC\uC2B4\uC758 \uC9C0\uAE08
@@ -55,40 +61,47 @@ MonoBehaviour:
       questionVoice: {fileID: 0}
       answer1: "\uACE0\uB9D9\uACE0 \uC548\uC2EC\uB3FC\uC694"
       answer2: "\uD654\uB098\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 5923164730387857049, guid: aa4b9bfbbc36c4634892bd7884400267, type: 3}
-    dialogueText: "\uC0AC\uB0E5\uAFBC\uC774 \uB098\uBB34\uAFBC\uC5D0\uAC8C \uBB3C\uC5B4\uBD10\uC694.
-      \"\uC0AC\uC2B4\uC774 \uC9C0\uB098\uAC00\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uAE4C?\"
-      \uB098\uBB34\uAFBC\uC740 \uC0AC\uC2B4\uC744 \uC9C0\uD0A4\uAE30 \uC704\uD574
-      \uC5C9\uB6B1\uD55C \uACF3\uC744 \uAC00\uB9AC\uD0A4\uBA70 \"\uC800\uCABD\uC73C\uB85C
-      \uAC14\uC5B4\uC694\"\uB77C\uACE0 \uB9D0\uD588\uC5B4\uC694. \uC0AC\uB0E5\uAFBC\uC740
-      \uADF8\uCABD\uC73C\uB85C \uB6F0\uC5B4\uAC14\uC5B4\uC694."
-    ttsClip: {fileID: 0}
+    dialogueText: The hunter asks the woodman, "Did a deer pass by this way?" To
+      protect the deer, the woodman points in the wrong direction and says, "It went
+      that way." The hunter then runs off in that direction.
+    ttsClip: {fileID: 8300000, guid: e72dd8ce357e2c1419be61f6c4773d8e, type: 3}
     quizzes:
-    - questionText: "\uC0AC\uB0E5\uAFBC\uC5D0\uAC8C \uAC70\uC9D3\uB9D0\uC744 \uD558\uB294
-        \uC21C\uAC04 \uB098\uBB34\uAFBC\uC758 \uAE30\uBD84\uC740?"
+    - questionText: How does the woodman feel at the moment he lies to the hunter?
       questionVoice: {fileID: 0}
-      answer1: "\uBD88\uC548\uD574\uC694"
-      answer2: "\uC7AC\uBBF8\uC788\uC5B4\uC694"
+      answer1: He feels anxious.
+      answer2: He feels amused.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! Even though he is doing a good deed, the woodman
+        feels anxious because he is afraid the hunter might find out the truth. His
+        heart must be beating fast!
+      wrongFeedback: Not quite! The woodman isn't lying for fun. He is risking a
+        lot to save the deer's life, so he would feel nervous and tense, not amused.
+        Try again!
       targetType: 0
       isCommon: 0
-    - questionText: "\uAC70\uC9D3\uB9D0\uC740 \uB098\uC05C \uAC83\uC774\uC5D0\uC694.
-        \uD558\uC9C0\uB9CC \uC5B8\uC81C\uB294 \uAD1C\uCC2E\uC744\uAE4C\uC694?"
+    - questionText: If the hunter realized that the woodman was lying to him, how
+        would he feel?
       questionVoice: {fileID: 0}
-      answer1: "\uB2E4\uB978 \uC0AC\uB78C\uC758 \uC0DD\uBA85\uC774\uB098 \uC548\uC804\uC744
-        \uC9C0\uD0AC \uB54C\uC694"
-      answer2: "\uC219\uC81C \uC548 \uD55C \uAC78 \uC228\uAE38 \uB54C\uC694"
-      correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      answer1: Kindness
+      answer2: Sad
+      answer3: Anger
+      answer4: Disgust
+      correctAnswerIndex: 2
+      correctFeedback: Correct! The hunter would feel anger because the woodman is
+        tricking him and making him lose his prey.
+      wrongFeedback: Think about how someone feels when they are being lied to. They
+        would feel very angry!
+      targetType: 1
       isCommon: 0
     - questionText: "\uC0AC\uB0E5\uAFBC\uC774 \uAC00\uBC84\uB9AC\uACE0 \uC0AC\uC2B4\uC774
         \uC548\uC804\uD574\uC84C\uC5B4\uC694. \uC9C0\uAE08 \uB098\uBB34\uAFBC\uC758
@@ -96,82 +109,94 @@ MonoBehaviour:
       questionVoice: {fileID: 0}
       answer1: "\uC548\uC2EC\uB418\uACE0 \uB2E4\uD589\uC774\uC5D0\uC694"
       answer2: "\uC2AC\uD37C\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 1507738771247178153, guid: 9026290b687eb4319aa32cf9fc6ad81b, type: 3}
-    dialogueText: "\uC0AC\uC2B4\uC774 \uB098\uBB34\uAFBC\uC5D0\uAC8C \uB9D0\uD574\uC694.
-      \"\uC815\uB9D0 \uACE0\uB9D9\uC2B5\uB2C8\uB2E4! \uC81C \uBAA9\uC228\uC744 \uAD6C\uD574\uC8FC\uC2E0
-      \uC740\uD61C\uB97C \uAC1A\uACE0 \uC2F6\uC5B4\uC694. \uC18C\uC6D0\uC774 \uC788\uC73C\uC138\uC694?\"
-      \uB098\uBB34\uAFBC\uC740 \uBD80\uB044\uB7EC\uC6CC\uD558\uBA70 \"\uCC29\uD558\uACE0
-      \uC608\uC05C \uC544\uB0B4\uC640 \uD568\uAED8 \uD589\uBCF5\uD558\uAC8C \uC0B4\uACE0
-      \uC2F6\uC5B4\uC694\"\uB77C\uACE0 \uB9D0\uD588\uC5B4\uC694."
-    ttsClip: {fileID: 0}
+    dialogueText: The deer says to the woodman, "Thank you so much! I want to repay
+      you for saving my life. Do you have a wish?" The woodman shyly replies, "I
+      want to live happily with a kind and beautiful wife.
+    ttsClip: {fileID: 8300000, guid: 2eff3b20da399bf4caed7620112abcf0, type: 3}
     quizzes:
-    - questionText: " \uC0AC\uC2B4\uC774 \"\uC740\uD61C\uB97C \uAC1A\uACE0 \uC2F6\uC5B4\uC694\"\uB77C\uACE0
-        \uB9D0\uD588\uC5B4\uC694. \uC0AC\uC2B4\uC758 \uC9C0\uAE08 \uAE30\uBD84\uC740?"
+    - questionText: The deer says, "I want to repay you." How does the deer feel
+        right now?
       questionVoice: {fileID: 0}
-      answer1: "\uACE0\uB9D9\uACE0 \uBCF4\uB2F5\uD558\uACE0 \uC2F6\uC5B4\uC694"
-      answer2: "\uD654\uB098\uC694"
+      answer1: I feel grateful and want to repay the favor.
+      answer2: I feel angry.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! The deer feels deeply thankful to the woodman for
+        saving its life and sincerely wants to do something kind in return.
+      wrongFeedback: That's not right. The woodman just saved the deer's life! The
+        deer wouldn't feel angry; it would feel very grateful. Try again!
       targetType: 0
       isCommon: 0
-    - questionText: "\uCE5C\uAD6C\uAC00 \uB098\uB97C \uB3C4\uC640\uC92C\uC5B4\uC694.
-        \uC5B4\uB5BB\uAC8C \uD574\uC57C \uD560\uAE4C\uC694?"
+    - questionText: How does the woodman feel while talking to the deer?
       questionVoice: {fileID: 0}
-      answer1: "\"\uACE0\uB9C8\uC6CC\"\uB77C\uACE0 \uB9D0\uD558\uACE0 \uB098\uC911\uC5D0
-        \uB098\uB3C4 \uB3C4\uC640\uC918\uC694"
-      answer2: "\uC544\uBB34 \uB9D0 \uC548 \uD574\uC694"
+      answer1: Joy
+      answer2: Sad
+      answer3: Anger
+      answer4: Disgust
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      correctFeedback: "Great job! You correctly identified the woodman\u2019s emotions.
+        His kind interaction with the deer brings him a sense of happiness and peace."
+      wrongFeedback: Try again! Does the woodman seem like he wants to hurt the deer?
+        If he is speaking kindly to it, he probably isn't feeling Anger or Disgust.
+        What is the opposite of those feelings?
+      targetType: 1
       isCommon: 0
     - questionText: "\uB098\uBB34\uAFBC\uC774 \uC18C\uC6D0\uC744 \uB9D0\uD560 \uB54C
         \uBD80\uB044\uB7EC\uC6CC\uD588\uC5B4\uC694. \uC65C \uADF8\uB7AC\uC744\uAE4C\uC694?"
       questionVoice: {fileID: 0}
       answer1: "\uBD80\uB044\uB7FD\uACE0 \uC465\uC2A4\uB7EC\uC6CC\uC694"
       answer2: " \uD654\uAC00 \uB098\uC11C\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 7202741015673569481, guid: 805dbe7c927844fa480e8a7a625fff63, type: 3}
-    dialogueText: "\uC0AC\uC2B4\uC774 \uB098\uBB34\uAFBC\uC5D0\uAC8C \uC120\uB140\uC758
-      \uB0A0\uAC1C\uC637\uC744 \uC228\uAE30\uB294 \uBC29\uBC95\uC744 \uC54C\uB824\uC92C\uC5B4\uC694.
-      \uADF8\uB9AC\uACE0 \uC5EC\uB7EC \uBC88 \uB9D0\uD588\uC5B4\uC694. \"\uD558\uC9C0\uB9CC
-      \uAF2D \uAE30\uC5B5\uD558\uC138\uC694! \uC544\uC774\uB97C \uC14B \uB0B3\uC744
-      \uB54C\uAE4C\uC9C0 \uC808\uB300\uB85C \uC120\uB140\uC5D0\uAC8C \uB0A0\uAC1C\uC637\uC744
-      \uBCF4\uC5EC\uC8FC\uBA74 \uC548 \uB3FC\uC694!\" \uB098\uBB34\uAFBC\uC740 \uACE0\uAC1C\uB97C
-      \uB044\uB355\uC600\uC5B4\uC694."
-    ttsClip: {fileID: 0}
+    dialogueText: "The deer told the woodman how to hide the fairy\u2019s winged
+      robe. Then, the deer emphasized several times, \"But remember! You must never
+      show the winged robe to the fairy until you have three children!\" The woodman
+      nodded his head."
+    ttsClip: {fileID: 8300000, guid: 41beb9828d341db42b5eee5cbf4a72f0, type: 3}
     quizzes:
-    - questionText: "\uC0AC\uC2B4\uC774 \uC5EC\uB7EC \uBC88 \"\uC808\uB300\uB85C
-        \uBCF4\uC5EC\uC8FC\uBA74 \uC548 \uB3FC\uC694\"\uB77C\uACE0 \uB9D0\uD588\uC5B4\uC694.
-        \uC0AC\uC2B4\uC758 \uB9C8\uC74C\uC740?"
+    - questionText: The deer said several times, "You must never show it to her."
+        What is the deer feeling?
       questionVoice: {fileID: 0}
-      answer1: "\uAC71\uC815\uB3FC\uC694"
-      answer2: "\uC2E0\uB098\uC694"
+      answer1: The deer is worried.
+      answer2: The deer is excited.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! The deer is worried that the woodman might make a
+        mistake. It knows that if the fairy finds her robe too soon, she will fly
+        back to heaven and leave the woodman alone.
+      wrongFeedback: "That's not right. This is a very serious warning, not a fun
+        game. The deer is repeating the warning because it is worried about the woodman\u2019s
+        future happiness. Try again!"
       targetType: 0
       isCommon: 0
-    - questionText: "\uB098\uBB34\uAFBC\uC774 \"\uC54C\uACA0\uC5B4\uC694\"\uB77C\uACE0
-        \uACE0\uAC1C\uB97C \uB044\uB355\uC600\uC5B4\uC694. \uC9C0\uAE08 \uB098\uBB34\uAFBC\uC758
-        \uB9C8\uC74C\uC740?"
+    - questionText: Imagine if the woodman ignores the deer's warning. What feeling
+        would the deer's warning prevent later?
       questionVoice: {fileID: 0}
-      answer1: "\uC57D\uC18D\uC744 \uC9C0\uCF1C\uC57C\uACA0\uB2E4\uACE0 \uB2E4\uC9D0\uD574\uC694"
-      answer2: "\uD654\uB098\uC694"
-      correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      answer1: Joy
+      answer2: Sad
+      answer3: Anger
+      answer4: Disgust
+      correctAnswerIndex: 1
+      correctFeedback: Correct! The warning is to prevent a sad separation in the
+        future.
+      wrongFeedback: The deer is trying to prevent a very sad event from happening.
+      targetType: 1
       isCommon: 0
     - questionText: "\uC9D1\uC5D0 \uC640\uC11C \uC5C4\uB9C8\uC5D0\uAC8C \uC2A4\uD2F0\uCEE4\uB97C
         \uC790\uB791\uD588\uC5B4\uC694. \uC5C4\uB9C8\uB3C4 \"\uC6B0\uB9AC \uC544\uB4E4/\uB538
@@ -180,243 +205,277 @@ MonoBehaviour:
       questionVoice: {fileID: 0}
       answer1: "\uD589\uBCF5\uD574\uC694."
       answer2: "\uC2AC\uD37C\uC694."
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: -6989831588119254564, guid: ad03e1a25432a4298b5b4a123b9e6d8a, type: 3}
-    dialogueText: "\uB0A0\uAC1C\uC637\uC744 \uC783\uC5B4\uBC84\uB9B0 \uC120\uB140\uAC00
-      \uBC14\uC704\uC5D0 \uC549\uC544 \uD6CC\uCA4D\uD6CC\uCA4D \uC6B8\uACE0 \uC788\uC5B4\uC694.
-      \"\uB0A0\uAC1C\uC637\uC744 \uC783\uC5B4\uBC84\uB824\uC11C \uD558\uB298\uB098\uB77C\uB85C
-      \uB3CC\uC544\uAC08 \uC218 \uC5C6\uC5B4\uC694. \uC5B4\uB5A1\uD558\uC8E0?\" \uC120\uB140\uB294
-      \uB208\uBB3C\uC744 \uD758\uB9AC\uBA70 \uB9D0\uD588\uC5B4\uC694. \uB098\uBB34\uAFBC\uC740
-      \"\uB098\uC640 \uD568\uAED8 \uC6B0\uB9AC \uC9D1\uC73C\uB85C \uAC11\uC2DC\uB2E4\"\uB77C\uACE0
-      \uB9D0\uD588\uC5B4\uC694."
-    ttsClip: {fileID: 0}
+    dialogueText: The fairy, who has lost her winged robe, is sitting on a rock,
+      sobbing. "I lost my winged robe, so I can't return to heaven. What should I
+      do?" she said through her tears. The woodman said, "Please, come to my house
+      with me."
+    ttsClip: {fileID: 8300000, guid: 832599ca52da78d49ae7b5771242285a, type: 3}
     quizzes:
-    - questionText: "\uC120\uB140\uAC00 \uD558\uB298\uB098\uB77C\uB85C \uB3CC\uC544\uAC08
-        \uC218 \uC5C6\uC5B4\uC11C \uC6B8\uACE0 \uC788\uC5B4\uC694. \uC120\uB140\uC758
-        \uC9C0\uAE08 \uAE30\uBD84\uC740?"
+    - questionText: The fairy is crying because she cannot return to heaven. How
+        does she feel right now?
       questionVoice: {fileID: 0}
-      answer1: "\uC2AC\uD37C\uC694"
-      answer2: "\uAE30\uBED0\uC694"
+      answer1: She feels sad.
+      answer2: She feels happy.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! The fairy is deeply saddened because she has lost
+        her only way to go back home to heaven. Her heart is filled with sorrow.
+      wrongFeedback: That's not right. Imagine being separated from your family and
+        home forever. Would you feel happy? The fairy is crying because she is in
+        despair. Try again!
       targetType: 0
       isCommon: 0
-    - questionText: "\uCE5C\uAD6C\uAC00 \uC911\uC694\uD55C\uAC83\uC744 \uC783\uC5B4\uBC84\uB824\uC11C
-        \uC6B8\uACE0 \uC788\uC5B4\uC694. \uC5B4\uB5BB\uAC8C \uD574\uC57C \uD560\uAE4C\uC694?"
+    - questionText: If the fairy had known at that moment that the woodman was the
+        thief who stole her robe, how would she feel toward him?
       questionVoice: {fileID: 0}
-      answer1: "\"\uAD1C\uCC2E\uC544\" \uD558\uACE0 \uC704\uB85C\uD574\uC8FC\uACE0
-        \uAC19\uC774 \uCC3E\uC544\uC918\uC694"
-      answer2: "\"\uB124\uAC00 \uC798\uBABB\uD588\uC5B4\" \uD558\uACE0 \uB180\uB824\uC694"
-      correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      answer1: Joy
+      answer2: Sad
+      answer3: Anger
+      answer4: Disgust
+      correctAnswerIndex: 1
+      correctFeedback: Correct! The fairy would feel disgust toward the man who stole
+        her precious robe and then acted like a savior.
+      wrongFeedback: Look at the words 'sobbing' and 'tears'. She is feeling very
+        sad.
+      targetType: 1
       isCommon: 0
     - questionText: "\uC120\uB140\uAC00 \uC5B4\uCA54 \uC218 \uC5C6\uC774 \uB098\uBB34\uAFBC\uC744
         \uB530\uB77C\uAC14\uC5B4\uC694. \uC120\uB140\uC758 \uB9C8\uC74C\uC740?"
       questionVoice: {fileID: 0}
       answer1: "\uBD88\uC548\uD558\uACE0 \uAC71\uC815\uB3FC\uC694"
       answer2: "\uD589\uBCF5\uD574\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 6316488253109115523, guid: 27bb706159ced45e2aa2a3aa99b0b235, type: 3}
-    dialogueText: "\uBA87 \uB144\uC774 \uC9C0\uB0AC\uC5B4\uC694. \uB098\uBB34\uAFBC\uACFC
-      \uC120\uB140\uB294 \uADC0\uC5EC\uC6B4 \uC544\uB4E4\uACFC \uB538\uC744 \uB0B3\uC558\uC5B4\uC694.
-      \uB098\uBB34\uAFBC\uC740 \uAC00\uC871\uACFC \uD568\uAED8 \uC788\uC5B4\uC11C
-      \uBB34\uCC99 \uD589\uBCF5\uD588\uC5B4\uC694. \uC544\uC774\uB4E4\uACFC \uB180\uACE0,
-      \uD568\uAED8 \uBC25\uC744 \uBA39\uACE0, \uC6C3\uC73C\uBA70 \uC2DC\uAC04\uC744
-      \uBCF4\uB0C8\uC5B4\uC694."
-    ttsClip: {fileID: 0}
+    dialogueText: Several years have passed. The woodman and the fairy now have a
+      cute son and daughter. The woodman is very happy to be with his family. He
+      spends his time playing with the children, eating meals together, and laughing
+      with them.
+    ttsClip: {fileID: 8300000, guid: d559d6e16b38feb46a3e09832a29b9c0, type: 3}
     quizzes:
-    - questionText: "\uB098\uBB34\uAFBC\uC774 \uAC00\uC871\uACFC \uD568\uAED8 \uC788\uC5B4\uC694.
-        \uC9C0\uAE08 \uB098\uBB34\uAFBC\uC758 \uAE30\uBD84\uC740?"
+    - questionText: The woodman is with his family. How does he feel right now?
       questionVoice: {fileID: 0}
-      answer1: "\uD589\uBCF5\uD558\uACE0 \uAE30\uBED0\uC694"
-      answer2: " \uC2AC\uD37C\uC694"
+      answer1: He feels happy and joyful.
+      answer2: He feels sad.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694 "
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! The woodman has achieved his dream of starting a
+        family. Spending time with his loving wife and children brings him the greatest
+        happiness in the world.
+      wrongFeedback: That's not right. Look at the woodman laughing and playing with
+        his cute children. He is enjoying a peaceful and loving life, so he wouldn't
+        feel sad. Try again!
       targetType: 0
       isCommon: 0
-    - questionText: "\uAC00\uC871\uB07C\uB9AC \uD568\uAED8 \uD560 \uC218 \uC788\uB294
-        \uC88B\uC740 \uC77C\uC740?"
+    - questionText: How does the woodman feel while playing with his children?
       questionVoice: {fileID: 0}
-      answer1: "\uD568\uAED8 \uBC25 \uBA39\uACE0, \uC774\uC57C\uAE30\uD558\uACE0,
-        \uB180\uC544\uC694"
-      answer2: "\uAC01\uC790 \uB2E4\uB978 \uBC29\uC5D0\uC11C \uD63C\uC790 \uC788\uC5B4\uC694"
+      answer1: Joy
+      answer2: Sad
+      answer3: Anger
+      answer4: Disgust
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694 "
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      correctFeedback: Correct! The story explicitly says the woodman is "very happy"
+        with his family.
+      wrongFeedback: The woodman is laughing and eating with his cute children. It's
+        a happy moment!
+      targetType: 1
       isCommon: 0
     - questionText: "\uC544\uC774\uB4E4\uC774 \uC5C4\uB9C8 \uC544\uBE60\uC640 \uD568\uAED8
         \uB180\uACE0 \uC788\uC5B4\uC694. \uC544\uC774\uB4E4\uC758 \uAE30\uBD84\uC740?"
       questionVoice: {fileID: 0}
       answer1: "\uC990\uAC81\uACE0 \uD589\uBCF5\uD574\uC694"
       answer2: "\uBB34\uC11C\uC6CC\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694 "
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 6224017020284958678, guid: 4ca7c66647dff4d3387d6285cff0324a, type: 3}
-    dialogueText: "\uD558\uC9C0\uB9CC \uC120\uB140\uB294 \uAC00\uB054 \uD558\uB298\uB098\uB77C\uC5D0
-      \uC788\uB294 \uAC00\uC871\uB4E4\uC744 \uADF8\uB9AC\uC6CC\uD558\uBA70 \uB208\uBB3C\uC744
-      \uD758\uB838\uC5B4\uC694. \uB098\uBB34\uAFBC\uC740 \uADF8\uB7F0 \uC544\uB0B4\uB97C
-      \uBCF4\uBA70 \uBBF8\uC548\uD55C \uB9C8\uC74C\uC774 \uB4E4\uC5C8\uC5B4\uC694.
-      \"\uC5EC\uBCF4\uAC00 \uB108\uBB34 \uC2AC\uD37C \uBCF4\uC5EC\uC11C \uB0B4 \uB9C8\uC74C\uB3C4
-      \uC544\uD30C...\""
-    ttsClip: {fileID: 0}
+    dialogueText: However, the fairy sometimes shed tears, missing her family in
+      heaven. Looking at his wife, the woodman felt sorry. "It breaks my heart to
+      see you so sad..." he said.
+    ttsClip: {fileID: 8300000, guid: bcb6b596e5389c04f98b70df244810b0, type: 3}
     quizzes:
-    - questionText: "\uC120\uB140\uAC00 \uD558\uB298\uB098\uB77C \uAC00\uC871\uB4E4\uC744
-        \uC0DD\uAC01\uD558\uBA70 \uC6B8\uC5B4\uC694. \uC120\uB140\uC758 \uAE30\uBD84\uC740?"
+    - questionText: The fairy is crying while thinking about her family in heaven.
+        How does she feel?
       questionVoice: {fileID: 0}
-      answer1: "\uADF8\uB9BD\uACE0 \uBCF4\uACE0 \uC2F6\uC5B4\uC694"
-      answer2: "\uD654\uB098\uC694"
+      answer1: She misses them and wants to see them.
+      answer2: She feels angry.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! The fairy feels a deep longing for her home and the
+        family she left behind in heaven. This feeling of missing someone dearly
+        is called 'homesickness'.
+      wrongFeedback: That's not right. The fairy is crying because she loves and
+        misses her family, not because she is mad at them. Her tears are a sign of
+        her longing and sadness. Try again!
       targetType: 0
       isCommon: 0
-    - questionText: "\uCE5C\uAD6C\uAC00 \uC2AC\uD37C \uBCF4\uC5EC\uC694. \uB098\uB294
-        \uC5B4\uB5BB\uAC8C \uD574\uC57C \uD560\uAE4C\uC694?"
+    - questionText: 
       questionVoice: {fileID: 0}
-      answer1: "\"\uAD1C\uCC2E\uC544?\" \uBB3C\uC5B4\uBCF4\uACE0 \uC774\uC57C\uAE30\uB97C
-        \uB4E4\uC5B4\uC918\uC694"
-      answer2: "\uBAA8\uB978 \uCC99\uD558\uACE0 \uAC00\uC694"
+      answer1: 
+      answer2: 
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      correctFeedback: 
+      wrongFeedback: 
+      targetType: 1
       isCommon: 0
     - questionText: "\uB098\uBB34\uAFBC\uC774 \uC2AC\uD37C\uD558\uB294 \uC544\uB0B4\uB97C
         \uBCF4\uACE0 \uC788\uC5B4\uC694. \uC9C0\uAE08 \uB098\uBB34\uAFBC\uC758 \uB9C8\uC74C\uC740?"
       questionVoice: {fileID: 0}
       answer1: "\uC2AC\uD37C\uC694"
       answer2: "\uC7AC\uBBF8\uC788\uC5B4\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 6282487003229605118, guid: 0dde4774e63064cca8c67021355c88a7, type: 3}
-    dialogueText: "\uB098\uBB34\uAFBC\uC740 \uC544\uB0B4\uC758 \uB208\uBB3C\uC744
-      \uBCF4\uACE0 \uCC38\uC9C0 \uBABB\uD588\uC5B4\uC694. \uC0AC\uC2B4\uACFC\uC758
-      \uC57D\uC18D\uC744 \uC78A\uACE0 \uB0A0\uAC1C\uC637\uC744 \uBCF4\uC5EC\uC92C\uC5B4\uC694.
-      \"\uC5EC\uBCF4, \uC5EC\uAE30 \uB2F9\uC2E0\uC758 \uB0A0\uAC1C\uC637\uC774\uC694.
-      \uC774\uC81C \uADF8\uB9CC \uC2AC\uD37C\uD574\uC694.\" \uC120\uB140\uB294 \uB0A0\uAC1C\uC637\uC744
-      \uBCF4\uC790\uB9C8\uC790 \uAE30\uBED0\uD558\uBA70 \uC785\uACE0, \uB450 \uC544\uC774\uB97C
-      \uC548\uACE0 \uD558\uB298\uB098\uB77C\uB85C \uB0A0\uC544\uAC00 \uBC84\uB838\uC5B4\uC694!"
-    ttsClip: {fileID: 0}
+    dialogueText: The woodman could no longer bear to see his wife's tears. Forgetting
+      his promise to the deer, he showed her the winged robe. "Honey, here is your
+      winged robe. Please don't be sad anymore." As soon as the fairy saw the robe,
+      she joyfully put it on, grabbed her two children, and flew away to heaven!
+    ttsClip: {fileID: 8300000, guid: 18253f217a97d974daff1837a5a90ae5, type: 3}
     quizzes:
-    - questionText: "\uC544\uB0B4\uC640 \uC544\uC774\uB4E4\uC774 \uD558\uB298\uB85C
-        \uB0A0\uC544\uAC00 \uBC84\uB838\uC5B4\uC694! \uB098\uBB34\uAFBC\uC758 \uC9C0\uAE08
-        \uAE30\uBD84\uC740?"
+    - questionText: His wife and children have flown away to heaven! How does the
+        woodman feel right now?
       questionVoice: {fileID: 0}
-      answer1: "\uC2AC\uD37C\uC694"
-      answer2: "\uC2E0\uB098\uC694"
+      answer1: He feels sad.
+      answer2: He feels excited.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! The woodman is devastated. He showed her the robe
+        because he loved her, but as a result, he lost his entire family in an instant.
+        He must feel incredibly lonely and regretful.
+      wrongFeedback: "That's not right. Think about it\u2014his beloved wife and
+        children have just disappeared into the sky, leaving him all alone. This
+        is the most heartbreaking moment for the woodman. Try again!"
       targetType: 0
       isCommon: 0
-    - questionText: "\uCE5C\uAD6C\uC640 \uD55C \uC57D\uC18D\uC744 \uC9C0\uD0A4\uC9C0
-        \uC54A\uC73C\uBA74 \uC5B4\uB5BB\uAC8C \uB420\uAE4C\uC694?"
+    - questionText: 
       questionVoice: {fileID: 0}
-      answer1: "\uCE5C\uAD6C\uAC00 \uC18D\uC0C1\uD574\uD558\uACE0 \uC2E0\uB8B0\uB97C
-        \uC783\uC5B4\uC694"
-      answer2: "\uC544\uBB34 \uC77C\uB3C4 \uC548 \uC0DD\uACA8\uC694"
+      answer1: 
+      answer2: 
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      correctFeedback: 
+      wrongFeedback: 
+      targetType: 1
       isCommon: 0
     - questionText: "\uB098\uBB34\uAFBC\uC774 \uC0AC\uC2B4\uC758 \uACBD\uACE0\uB97C
         \uC0DD\uAC01\uD574\uC694. \uC9C0\uAE08 \uB098\uBB34\uAFBC\uC758 \uB9C8\uC74C\uC740?"
       questionVoice: {fileID: 0}
       answer1: "\uD6C4\uD68C\uD558\uACE0 \uBBF8\uC548\uD574\uC694"
       answer2: "\uAE30\uBED0\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 8915712362660643056, guid: 402e3196286284f60919efedc44a135b, type: 3}
-    dialogueText: "\uC0AC\uC2B4\uC774 \uB2E4\uC2DC \uB098\uD0C0\uB098 \uB3C4\uC640\uC92C\uC5B4\uC694.
-      \uB098\uBB34\uAFBC\uC740 \uB450\uB808\uBC15\uC744 \uD0C0\uACE0 \uD558\uB298\uB098\uB77C\uB85C
-      \uC62C\uB77C\uAC00\uC11C \uC120\uB140 \uC544\uB0B4\uC640 \uC544\uC774\uB4E4\uC744
-      \uB9CC\uB0AC\uC5B4\uC694! \"\uC5EC\uBCF4! \uC598\uB4E4\uC544!\" \uB098\uBB34\uAFBC\uC740
-      \uAC00\uC871\uC744 \uAF2D \uC548\uC558\uC5B4\uC694. \uBAA8\uB450 \uB2E4\uC2DC
-      \uB9CC\uB098\uC11C \uB108\uBB34 \uAE30\uBEE4\uC5B4\uC694."
-    ttsClip: {fileID: 0}
+    dialogueText: The deer appeared again to help the woodman. He rode a bucket up
+      to heaven and finally met his wife and children! "Honey! Children!" The woodman
+      hugged his family tightly. They were all overjoyed to be together again.
+    ttsClip: {fileID: 8300000, guid: e5a0a1ba5abf11f4aa1819835fc4a233, type: 3}
     quizzes:
-    - questionText: "\uD558\uB298\uB098\uB77C\uC5D0\uC11C \uAC00\uC871\uC744 \uB2E4\uC2DC
-        \uB9CC\uB0AC\uC5B4\uC694! \uB098\uBB34\uAFBC\uC758 \uAE30\uBD84\uC740?"
+    - questionText: The woodman has reunited with his family in heaven! How does
+        he feel?
       questionVoice: {fileID: 0}
-      answer1: "\uB108\uBB34 \uAE30\uC058\uACE0 \uAC10\uACA9\uC2A4\uB7EC\uC6CC\uC694!"
-      answer2: "\uD654\uB098\uC694"
+      answer1: He feels overjoyed and deeply moved!
+      answer2: He feels angry.
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! After a long and difficult journey, the woodman finally
+        found his family. His heart is overflowing with joy and emotion because he
+        thought he might never see them again.
+      wrongFeedback: That's not right. The woodman spent so much time looking for
+        his family. Meeting them again is the happiest moment of his life, so there
+        is no reason for him to be angry. Try again!
       targetType: 0
       isCommon: 0
-    - questionText: "\uCE5C\uAD6C\uAC00 \uC804\uD559\uC744 \uAC14\uB2E4\uAC00 \uB2E4\uC2DC
-        \uB3CC\uC544\uC654\uC5B4\uC694. \uC5B4\uB5BB\uAC8C \uD574\uC57C \uD560\uAE4C\uC694?"
+    - questionText: 
       questionVoice: {fileID: 0}
-      answer1: "\"\uBC18\uAC00\uC6CC!\" \uD558\uACE0 \uAC19\uC774 \uB180\uC544\uC694"
-      answer2: "\"\uC65C \uC654\uC5B4?\" \uD558\uACE0 \uBB34\uC2DC\uD574\uC694"
+      answer1: 
+      answer2: 
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      correctFeedback: 
+      wrongFeedback: 
+      targetType: 1
       isCommon: 0
     - questionText: "\uC544\uC774\uB4E4\uC774 \uC544\uBE60\uB97C \uB2E4\uC2DC \uB9CC\uB0AC\uC5B4\uC694.
         \uC544\uC774\uB4E4\uC758 \uAE30\uBD84\uC740?"
       questionVoice: {fileID: 0}
       answer1: "\uD589\uBCF5\uD558\uACE0 \uC88B\uC544\uC694!"
       answer2: "\uBB34\uC11C\uC6CC\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 477351349437573007, guid: d38a07e35808a4f439927e425d1b3a72, type: 3}
-    dialogueText: "\uC2DC\uAC04\uC774 \uC9C0\uB098\uC790 \uB098\uBB34\uAFBC\uC740
-      \uB545\uC5D0 \uD63C\uC790 \uACC4\uC2DC\uB294 \uC5B4\uBA38\uB2C8\uAC00 \uAC71\uC815\uB418\uACE0
-      \uADF8\uB9AC\uC6E0\uC5B4\uC694. \uC120\uB140\uAC00 \uB0A0\uAC1C \uB2EC\uB9B0
-      \uB9D0\uC744 \uAD6C\uD574\uC92C\uC5B4\uC694. \"\uC5B4\uBA38\uB2C8\uAED8 \uB2E4\uB140\uC624\uC138\uC694.
-      \uD558\uC9C0\uB9CC \uC808\uB300\uB85C \uB9D0\uC5D0\uC11C \uB0B4\uB9AC\uBA74
-      \uC548 \uB3FC\uC694!\" \uB098\uBB34\uAFBC\uC740 \uB9D0\uC744 \uD0C0\uACE0 \uAC00\uC11C
-      \uC5B4\uBA38\uB2C8\uB97C \uB9CC\uB0AC\uC9C0\uB9CC \uB0B4\uB9B4 \uC218 \uC5C6\uC5C8\uC5B4\uC694."
-    ttsClip: {fileID: 0}
+    dialogueText: As time passed, the woodman began to worry about and miss his mother,
+      who was living alone on Earth. The fairy found a winged horse for him. 'Go
+      visit your mother. But remember, you must never get off the horse.' The woodman
+      rode the horse down and met his mother, but he could not get off.
+    ttsClip: {fileID: 8300000, guid: 709814b5aee9e114aa5fe98949cc8a6c, type: 3}
     quizzes:
-    - questionText: "\uB098\uBB34\uAFBC\uC774 \uB545\uC5D0 \uACC4\uC2E0 \uC5B4\uBA38\uB2C8\uB97C
-        \uC0DD\uAC01\uD574\uC694. \uC9C0\uAE08 \uB098\uBB34\uAFBC\uC758 \uB9C8\uC74C\uC740?"
+    - questionText: The woodman is thinking about his mother on Earth. How does he
+        feel right now?
       questionVoice: {fileID: 0}
-      answer1: "\uC2AC\uD37C\uC694"
-      answer2: "\uC2E0\uB098\uC694"
+      answer1: He feels sad.
+      answer2: 'He feels excited. '
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
-      correctFeedback: "\uC798\uD588\uC5B4\uC694"
-      wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
+      correctFeedback: Correct! The woodman is worried about his elderly mother who
+        is all alone. His heart is heavy with sadness and guilt because he cannot
+        be by her side to take care of her.
+      wrongFeedback: "That's not right. Think about it\u2014his mother is old and
+        alone, and he misses her very much. This is a sad situation born from his
+        love for his family, not a fun or exciting moment. Try again!"
       targetType: 0
       isCommon: 0
-    - questionText: "\uBD80\uBAA8\uB2D8\uC774\uB098 \uAC00\uC871\uC5D0\uAC8C \uC5B4\uB5BB\uAC8C
-        \uD574\uC57C \uD560\uAE4C\uC694?"
+    - questionText: 
       questionVoice: {fileID: 0}
-      answer1: "\uC0AC\uB791\uD55C\uB2E4\uACE0 \uB9D0\uD558\uACE0 \uC548\uC544\uB4DC\uB824\uC694"
-      answer2: "\uAD00\uC2EC \uC5C6\uB294 \uCC99\uD574\uC694"
+      answer1: 
+      answer2: 
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uB098\uBB34\uAFBC\uC774 \uB9D0\uC5D0\uC11C \uB0B4\uB9AC\uC9C0
         \uBABB\uD558\uACE0 \uBC14\uB85C \uB5A0\uB098\uC57C \uD574\uC694. \uC5B4\uBA38\uB2C8\uC758
@@ -424,8 +483,10 @@ MonoBehaviour:
       questionVoice: {fileID: 0}
       answer1: "\uC12D\uC12D\uD558\uACE0 \uC544\uC26C\uC6CC\uC694"
       answer2: "\uAE30\uBED0\uC694"
+      answer3: 
+      answer4: 
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0

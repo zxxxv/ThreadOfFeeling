@@ -16,7 +16,7 @@ MonoBehaviour:
   storyTitle: "\uD574\uC640\uB2EC\uC774\uB41C \uC624\uB204\uC774"
   storyCoverImage: {fileID: 21300000, guid: 2e94eeed1ad0a4630aa37eb22bec1eb7, type: 3}
   storyDescription: "\uC624\uB204\uC774\uAC00 \uC788\uC5C8\uC74C "
-  storyTag: 
+  storyTag: "#10\uAC1C\uC52C #\uAC01 30\uBB38\uC81C #"
   storyReward: {fileID: 11400000, guid: b75ee65caa1ff0b41bc3fcebf913bac9, type: 2}
   scenarios:
   - image: {fileID: -9062015590762506407, guid: 99cff76adc59546399c9c0ec20630d43, type: 3}
@@ -44,7 +44,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uC624\uB204\uC774\uAC00 \"\uC54C\uACA0\uC5B4\uC694, \uC870\uC2EC\uD560\uAC8C\uC694!\"\uB77C\uACE0
         \uC57D\uC18D\uD588\uC5B4\uC694. \uC9C0\uAE08 \uB9C8\uC74C\uC740?"
@@ -54,7 +54,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 5923164730387857049, guid: c6186e3def0b04d59b2a60951cf76972, type: 3}
     dialogueText: "\uC5C4\uB9C8\uAC00 \uCCAB \uBC88\uC9F8 \uACE0\uAC1C\uB97C \uB118\uB294\uB370
@@ -82,7 +82,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uC5C4\uB9C8\uAC00 \uB5A1\uC744 \uC8FC\uACE0 \uD638\uB791\uC774\uB97C
         \uD53C\uD588\uC5B4\uC694. \uC9C0\uAE08 \uC5C4\uB9C8\uC758 \uB9C8\uC74C\uC740?"
@@ -92,7 +92,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 1507738771247178153, guid: 9bc020f9dace4448ba8013dda2d6e0f4, type: 3}
     dialogueText: "\uBC24\uC774 \uB418\uC5C8\uC5B4\uC694. \uB611\uB611\uB611! \uBB38\uC744
@@ -120,7 +120,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uBB38\uD48D\uC9C0 \uAD6C\uBA4D\uC73C\uB85C \uD138 \uB9CE\uC740
         \uBC1C\uD1B1\uC774 \uBCF4\uC600\uC5B4\uC694! \uC9C0\uAE08 \uC624\uB204\uC774\uC758
@@ -131,7 +131,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 7202741015673569481, guid: 6907e0235ce9b49419f747bc6558e3b1, type: 3}
     dialogueText: "\"\uC800\uAC74 \uD638\uB791\uC774\uC57C!\" \uC624\uBE60\uAC00
@@ -158,7 +158,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uC624\uBE60\uAC00 \uB0B4 \uC190\uC744 \uAF2D \uC7A1\uC544\uC92C\uC5B4\uC694.
         \uB3D9\uC0DD\uC758 \uC9C0\uAE08 \uAE30\uBD84\uC740?"
@@ -168,7 +168,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: -6989831588119254564, guid: e3f7294e83831412498f9db12256bdb5, type: 3}
     dialogueText: "\uBC16\uC73C\uB85C \uB098\uC628 \uC624\uB204\uC774\uB294 \uD070
@@ -198,7 +198,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uB098\uBB34 \uC704\uC5D0\uC11C \uC624\uBE60\uC640 \uB3D9\uC0DD\uC774
         \uC11C\uB85C\uB97C \uAF2D \uC548\uC558\uC5B4\uC694. \uC9C0\uAE08 \uAE30\uBD84\uC740?"
@@ -209,7 +209,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 6316488253109115523, guid: 48e75740ec144402a8f8fb0020a42975, type: 3}
     dialogueText: "\uD638\uB791\uC774\uAC00 \uB098\uBB34 \uC544\uB798\uC5D0\uC11C
@@ -239,7 +239,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uB3D9\uC0DD\uC774 \"\uBBF8\uC548\uD574 \uC624\uBE60...\"\uB77C\uACE0
         \uB9D0\uD588\uC5B4\uC694. \uB3D9\uC0DD\uC758 \uC9C0\uAE08 \uB9C8\uC74C\uC740?"
@@ -249,7 +249,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 6224017020284958678, guid: c85012a101ccc40c7ada7cd83a8357df, type: 3}
     dialogueText: "\uD638\uB791\uC774\uAC00 \uB098\uBB34\uB97C \uD0C0\uACE0 \uC62C\uB77C\uC624\uAE30
@@ -278,7 +278,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uC624\uB204\uC774\uAC00 \uB9C8\uC9C0\uB9C9 \uD76C\uB9DD\uC744
         \uAC78\uACE0 \uD558\uB298\uC5D0 \uBE4C\uACE0 \uC788\uC5B4\uC694. \uC9C0\uAE08
@@ -289,7 +289,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 6282487003229605118, guid: a61a8e78a721542d0a8fdc54fff5bf0e, type: 3}
     dialogueText: "\uADF8 \uC21C\uAC04! \uD558\uB298\uC774 \uBC1D\uAC8C \uBE5B\uB098\uB354\uB2C8
@@ -318,7 +318,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uB3D9\uC544\uC904\uC744 \uD0C0\uACE0 \uC548\uC804\uD558\uAC8C
         \uD558\uB298\uB85C \uC62C\uB77C\uAC00\uACE0 \uC788\uC5B4\uC694. \uC9C0\uAE08
@@ -329,7 +329,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 8915712362660643056, guid: f68f94b85839b4cb3b4340dc5ce5e6d7, type: 3}
     dialogueText: "\uD558\uB298\uC5D0 \uC62C\uB77C\uC628 \uC624\uB204\uC774! \uD558\uB290\uB2D8\uC774
@@ -357,7 +357,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uC704\uAE30\uB97C \uADF9\uBCF5\uD558\uACE0 \uD2B9\uBCC4\uD55C
         \uC874\uC7AC\uAC00 \uB418\uC5C8\uC5B4\uC694. \uC9C0\uAE08 \uAE30\uBD84\uC740?"
@@ -367,7 +367,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
   - image: {fileID: 477351349437573007, guid: a36a58b7e5ec44e4b925ec77310f4fc0, type: 3}
     dialogueText: "\uADF8\uB7F0\uB370 \uB3D9\uC0DD\uC774 \"\uC800\uB294 \uBC24\uC774
@@ -397,7 +397,7 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 1
       isCommon: 0
     - questionText: "\uC624\uBE60\uAC00 \"\uB0B4\uAC00 \uBC24\uC744 \uC9C0\uCF1C\uC904\uAC8C\"\uB77C\uACE0
         \uD588\uC5B4\uC694. \uB3D9\uC0DD\uC758 \uC9C0\uAE08 \uAE30\uBD84\uC740?"
@@ -407,5 +407,5 @@ MonoBehaviour:
       correctAnswerIndex: 0
       correctFeedback: "\uC798\uD588\uC5B4\uC694"
       wrongFeedback: "\uC544\uC26C\uC6CC\uC694"
-      targetType: 0
+      targetType: 2
       isCommon: 0
